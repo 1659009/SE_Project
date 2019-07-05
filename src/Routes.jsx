@@ -13,6 +13,7 @@ import SignUp from './views/SignUp';
 import SignIn from './views/SignIn';
 import UnderDevelopment from './views/UnderDevelopment';
 import NotFound from './views/NotFound';
+import Homepageview from 'views/Homepage/Homepageview';
 
 export default class Routes extends Component {
   render() {
@@ -21,7 +22,12 @@ export default class Routes extends Component {
         <Redirect
           exact
           from="/"
-          to="/dashboard"
+          to="/homepage"
+        />
+        <Route
+          component={Homepageview}
+          exact
+          path="/homepage"
         />
         <Route
           component={Dashboard}

@@ -1,0 +1,23 @@
+#mainBG {
+    background-image: url('https://i.pinimg.com/originals/3c/24/46/3c24462450c2a902bf7e18f3d9aada81.jpg');
+    background-repeat: no-repeat;
+}
+
+#cardContent {
+    position: relative;
+    width: 50vh;
+    padding-top: 20vh;
+    margin-left: 77vh;
+    height: 30vh;
+    opacity: 0;
+}
+
+#mainPg {
+    padding-top: 20vh;
+    font-size: 30;
+    color: whitesmoke;
+}
+
+#centerBtn {
+    text-align: center;
+}
