@@ -19,12 +19,50 @@ const useStyles = makeStyles({
   }
 });
 
-export default function ImgMediaCard() {
+export default function ImgMediaCard(props) {
   const classes = useStyles();
-
+  const { data } = props;
+  console.log(props);
   return (
-    <div>
-      <Container style={{ marginTop: '10vh' }}>
+    <div className="container">
+      <div className="row" style={{ marginTop: '25px', padding: 'auto' }}>
+        {data.map(data => {
+          return (
+            <div className="col-4" style={{ paddingTop: '20px' }}>
+              <Card className={classes.card}>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    alt="Contemplative Reptile"
+                    height="140"
+                    image="https://ak0.picdn.net/shutterstock/videos/8911510/thumb/1.jpg"
+                    title="Contemplative Reptile"
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      {data.title}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p">
+                      {data.content}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions>
+                  <Button size="small" color="primary">
+                    Enroll
+                  </Button>
+                  <Button size="small" color="primary">
+                    View
+                  </Button>
+                </CardActions>
+              </Card>
+            </div>
+          );
+        })}
+        {/* <Container style={{ marginTop: '10vh' }}>
         <Grid container spacing={1} className={classes.cardContent}>
           <Grid item xs>
             <Card className={classes.card}>
@@ -241,7 +279,8 @@ export default function ImgMediaCard() {
             </Card>
           </Grid>
         </Grid>
-      </Container>
+      </Container> */}
+      </div>
     </div>
   );
 }
