@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import ImgMediaCard from './components/Homepagecontent';
 import Homepagemainpic from './components/Homepagemainpic';
+import Homepageaboutus from './components/Homepageaboutus';
 import Footer from '../../layouts/Homepage/components/Footer/Footer';
 
 import Homepage from '../../layouts/Homepage/Homepage';
@@ -44,6 +45,7 @@ export default function Homepageview() {
       <Homepage />
       <Homepagemainpic />
       <ImgMediaCard data={data} />
+      <Homepageaboutus/>
       <Footer />
     </div>
   );

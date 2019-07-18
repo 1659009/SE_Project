@@ -1,5 +1,5 @@
 #mainBG {
-    background-image: url('https://i.pinimg.com/originals/3c/24/46/3c24462450c2a902bf7e18f3d9aada81.jpg');
+    background-image: url('https://cdn.hipwallpaper.com/i/58/73/TivWEB.jpg');
     background-repeat: no-repeat;
 }
 
@@ -13,11 +13,23 @@
 }
 
 #mainPg {
-    padding-top: 20vh;
+    padding-top: 3vh;
     font-size: 30;
     color: whitesmoke;
 }
 
-#centerBtn {
-    text-align: center;
+#centerPaper {
+    width:'40%';
+    position: absolute;
+    top:50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+#bottomPaper {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
 }

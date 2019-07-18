@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { Container } from '@material-ui/core';
+import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles({
   card: {
@@ -24,6 +25,10 @@ export default function ImgMediaCard(props) {
   const { data } = props;
   console.log(props);
   return (
+    <div>
+    <Paper style={{height:'10vh', position:'relative',background:'#d0b808'}}>
+      <Typography style={{color:'#2F4F4F' ,top:'50%',left:'50%',marginRight:'-50%',transform:'translate(-50%,-50%)',position:'absolute',fontWeight:'Bold'}} variant="h1">COURSES</Typography>
+    </Paper>
     <div className="container">
       <div className="row" style={{ marginTop: '25px', padding: 'auto' }}>
         {data.map(data => {
@@ -50,237 +55,12 @@ export default function ImgMediaCard(props) {
                     </Typography>
                   </CardContent>
                 </CardActionArea>
-                <CardActions>
-                  <Button size="small" color="primary">
-                    Enroll
-                  </Button>
-                  <Button size="small" color="primary">
-                    View
-                  </Button>
-                </CardActions>
               </Card>
             </div>
           );
         })}
-        {/* <Container style={{ marginTop: '10vh' }}>
-        <Grid container spacing={1} className={classes.cardContent}>
-          <Grid item xs>
-            <Card className={classes.card}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  alt="Contemplative Reptile"
-                  height="140"
-                  image="https://ak0.picdn.net/shutterstock/videos/8911510/thumb/1.jpg"
-                  title="Contemplative Reptile"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    Lorem Ipsum
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nullam vitae rutrum leo. Proin viverra ultrices eleifend.
-                    Suspendisse vitae scelerisque justo. Suspendisse mollis elit
-                    vel quam sollicitudin dictum.
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <CardActions>
-                <Button size="small" color="primary">
-                  Enroll
-                </Button>
-                <Button size="small" color="primary">
-                  View
-                </Button>
-              </CardActions>
-            </Card>
-          </Grid>
-          <Grid item xs>
-            <Card className={classes.card}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  alt="Contemplative Reptile"
-                  height="140"
-                  image="https://ak0.picdn.net/shutterstock/videos/8911510/thumb/1.jpg"
-                  title="Contemplative Reptile"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    Lorem Ipsum
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nullam vitae rutrum leo. Proin viverra ultrices eleifend.
-                    Suspendisse vitae scelerisque justo. Suspendisse mollis elit
-                    vel quam sollicitudin dictum.
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <CardActions>
-                <Button size="small" color="primary">
-                  Enroll
-                </Button>
-                <Button size="small" color="primary">
-                  View
-                </Button>
-              </CardActions>
-            </Card>
-          </Grid>
-          <Grid item xs>
-            <Card className={classes.card}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  alt="Contemplative Reptile"
-                  height="140"
-                  image="https://ak0.picdn.net/shutterstock/videos/8911510/thumb/1.jpg"
-                  title="Contemplative Reptile"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    Lorem Ipsum
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nullam vitae rutrum leo. Proin viverra ultrices eleifend.
-                    Suspendisse vitae scelerisque justo. Suspendisse mollis elit
-                    vel quam sollicitudin dictum.
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <CardActions>
-                <Button size="small" color="primary">
-                  Enroll
-                </Button>
-                <Button size="small" color="primary">
-                  View
-                </Button>
-              </CardActions>
-            </Card>
-          </Grid>
-        </Grid>
-      </Container>
-      <Container style={{ marginTop: '10vh' }}>
-        <Grid container spacing={1} className={classes.cardContent}>
-          <Grid item xs>
-            <Card className={classes.card}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  alt="Contemplative Reptile"
-                  height="140"
-                  image="https://ak0.picdn.net/shutterstock/videos/8911510/thumb/1.jpg"
-                  title="Contemplative Reptile"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    Lorem Ipsum
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nullam vitae rutrum leo. Proin viverra ultrices eleifend.
-                    Suspendisse vitae scelerisque justo. Suspendisse mollis elit
-                    vel quam sollicitudin dictum.
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <CardActions>
-                <Button size="small" color="primary">
-                  Enroll
-                </Button>
-                <Button size="small" color="primary">
-                  View
-                </Button>
-              </CardActions>
-            </Card>
-          </Grid>
-          <Grid item xs>
-            <Card className={classes.card}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  alt="Contemplative Reptile"
-                  height="140"
-                  image="https://ak0.picdn.net/shutterstock/videos/8911510/thumb/1.jpg"
-                  title="Contemplative Reptile"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    Lorem Ipsum
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nullam vitae rutrum leo. Proin viverra ultrices eleifend.
-                    Suspendisse vitae scelerisque justo. Suspendisse mollis elit
-                    vel quam sollicitudin dictum.
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <CardActions>
-                <Button size="small" color="primary">
-                  Enroll
-                </Button>
-                <Button size="small" color="primary">
-                  View
-                </Button>
-              </CardActions>
-            </Card>
-          </Grid>
-          <Grid item xs>
-            <Card className={classes.card}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  alt="Contemplative Reptile"
-                  height="140"
-                  image="https://ak0.picdn.net/shutterstock/videos/8911510/thumb/1.jpg"
-                  title="Contemplative Reptile"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    Lorem Ipsum
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nullam vitae rutrum leo. Proin viverra ultrices eleifend.
-                    Suspendisse vitae scelerisque justo. Suspendisse mollis elit
-                    vel quam sollicitudin dictum.
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <CardActions>
-                <Button size="small" color="primary">
-                  Enroll
-                </Button>
-                <Button size="small" color="primary">
-                  View
-                </Button>
-              </CardActions>
-            </Card>
-          </Grid>
-        </Grid>
-      </Container> */}
       </div>
+    </div>
     </div>
   );
 }

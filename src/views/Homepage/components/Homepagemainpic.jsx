@@ -5,30 +5,34 @@ import './Homepage.css';
 import { Card, Button } from '@material-ui/core';
 
 export default class Homepagemainpic extends Component {
+  
   render() {
     return (
-      <div>
         <Paper
           style={{
-            height: '50vh'
+            height: '50vh',
+            position: 'relative'
           }}
           id="mainBG">
-          <div id="centerBtn">
-            <h1 id="mainPg">Welcome to our website</h1>
+            <Paper id='centerPaper' style={{background:'#2F4F4F',width:'30%',paddingLeft:'20px', paddingRight:'20px' }}>
+            <div style={{textAlign:'center'}}>
+            <h1 id="mainPg">Special Title </h1>
+            <p style={{color:'whitesmoke'}}>lorem ipsum caris kunas insopt igenagi</p>
             <Button
               style={{
-                background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-                boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-                color: 'white',
+                background: '#d0b808',
+                borderRadius: '10px',
+                color: 'whitesmoke',
                 height: 48,
                 padding: '0 30px',
-                marginTop: '10px'
+                marginBottom: '3vh',
               }}>
               Click here
             </Button>
-          </div>
+            </div>
+
+            </Paper>
         </Paper>
-      </div>
     );
   }
 }
