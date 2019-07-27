@@ -1,4 +1,9 @@
 import React from 'react';
+
+import { MemoryRouter as Router } from 'react-router';
+import { Link as RouterLink } from 'react-router-dom';
+import Link from '@material-ui/core/Link';
+
 import { fade, makeStyles } from '@material-ui/core/styles';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -8,12 +13,22 @@ import IconButton from '@material-ui/core/IconButton';
 const useStyles = makeStyles(theme => ({
   profileBtn: {
     '&:focus': { outline: 'none !important' }
+  },
+  link:{
+    color:'black',
+    '&:hover': {
+      color:'black',
+      textDecoration:'none',
+    }
   }
 }));
 
 export default function Profile() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const classes = useStyles();
+  const homeLink = React.forwardRef((props, ref) => (
+    <RouterLink innerRef={ref} {...props} />
+  ));
 
   function handleClick(event) {
     setAnchorEl(event.currentTarget);
@@ -41,7 +56,11 @@ export default function Profile() {
         onClose={handleClose}>
         <MenuItem onClick={handleClose}>Profile</MenuItem>
         <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem onClick={handleClose}>
+        <Link component={homeLink} to="/sign-in" className={classes.link}>
+        Logout
+        </Link>
+        </MenuItem>
       </Menu>
     </div>
   );

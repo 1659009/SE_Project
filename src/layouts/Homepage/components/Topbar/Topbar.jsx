@@ -1,5 +1,9 @@
 import React from 'react';
 
+import { MemoryRouter as Router } from 'react-router';
+import { Link as RouterLink } from 'react-router-dom';
+import Link from '@material-ui/core/Link';
+
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -11,7 +15,6 @@ import SearchIcon from '@material-ui/icons/Search';
 
 import MenuList from '@material-ui/core/MenuList';
 import Profile from './Components/Profile';
-
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -86,15 +89,22 @@ const useStyles = makeStyles(theme => ({
     width: '3%'
   },
   categorize: {
-    marginLeft:theme.spacing(3),
+    marginLeft: theme.spacing(3),
     '&:hover': {
       background: '#d0b808',
       color: 'black !important'
     },
     '&:focus': {
-      outline: 'none !important',
+      outline: 'none !important'
     }
   },
+  link: {
+    color: '#d0b808',
+    '&:hover': {
+      color: 'white',
+      textDecoration: 'none'
+    }
+  }
 }));
 
 export default function Topbar(props) {
@@ -112,22 +122,9 @@ export default function Topbar(props) {
   }
 
   const { options } = props;
-
-  // const menuId = 'primary-search-account-menu';
-  // const renderMenu = (
-  //   <Menu
-  //     anchorEl={anchorEl}
-  //     anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-  //     id={menuId}
-  //     keepMounted
-  //     transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-  //     open={isMenuOpen}
-  //     onClose={handleClose}>
-  //     <MenuItem onClick={handleClose}>Profile</MenuItem>
-  //     <MenuItem onClick={handleClose}>My account</MenuItem>
-  //     <MenuItem onClick={handleClose}>Log out</MenuItem>
-  //   </Menu>
-  // );
+  const homeLink = React.forwardRef((props, ref) => (
+    <RouterLink innerRef={ref} {...props} />
+  ));
 
   return (
     <div className={classes.grow}>
@@ -138,32 +135,32 @@ export default function Topbar(props) {
             src="https://scontent.fsgn5-6.fna.fbcdn.net/v/t1.15752-9/66393848_2411908192387248_6191358428502294528_n.png?_nc_cat=107&_nc_oc=AQlDymdus3YggYTzjLhMW8WFF_SGNMZc6gyt7Tc-X96kVNycysQwZdGo-AHixjHJwDk&_nc_ht=scontent.fsgn5-6.fna&oh=441fd0375e071b6daa33cc1b7b72ff3f&oe=5DBE3C26"
             alt="Logo"
           />
-          
-            <Button
-              className={classes.categorize}
-              style={{color:'#d0b808',
+
+          <Button
+            className={classes.categorize}
+            style={{
+              color: '#d0b808',
               border: '1px',
-              borderRadius:'10px',
-              padding: '10px 10px',}}
-              aria-controls="simple-menu"
-              aria-haspopup="true"
-              onClick={handleClickEvent}>
-              Explore
-            </Button>
-            <Menu
-            style={{marginTop:'50px'}}
-                    id="simple-menu"
-                    anchorEl={anchorEl}
-                    keepMounted
-                    open={Boolean(anchorEl)}
-                    onClose={handleClose}>
+              borderRadius: '10px',
+              padding: '10px 10px'
+            }}
+            aria-controls="simple-menu"
+            aria-haspopup="true"
+            onClick={handleClickEvent}>
+            Explore
+          </Button>
+          <Menu
+            style={{ marginTop: '50px' }}
+            id="simple-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}>
             {options.map(option => {
-              return(
-                <MenuItem onClick={handleClose}>{option}</MenuItem>
-              );
+              return <Link component={homeLink} to={option.link} className={classes.link}><MenuItem onClick={handleClose}>{option.title}</MenuItem></Link>;
             })}
-            </Menu>
-          
+          </Menu>
+
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -180,14 +177,20 @@ export default function Topbar(props) {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <MenuList className={classes.menuList}>
-              <MenuItem className={classes.menuItems}>Home</MenuItem>
-              <MenuItem className={classes.menuItems}>About us</MenuItem>
-              <MenuItem className={classes.menuItems}>FAQ</MenuItem>
+              <Link
+                component={homeLink}
+                to="/homepage"
+                className={classes.link}>
+                <MenuItem className={classes.menuItems}>Home</MenuItem>
+              </Link>
+              <Link component={homeLink} to="/" className={classes.link}>
+                <MenuItem className={classes.menuItems}>About us</MenuItem>
+              </Link>
+              <Link component={homeLink} to="/" className={classes.link}>
+                <MenuItem className={classes.menuItems}>FAQ</MenuItem>
+              </Link>
             </MenuList>
-            {/* <IconButton color="inherit">
-              <AccountCircle />
-            </IconButton> */}
-            <Profile/>
+            <Profile />
           </div>
         </Toolbar>
       </AppBar>

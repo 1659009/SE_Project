@@ -99,7 +99,7 @@ class SignIn extends Component {
 
       localStorage.setItem('isAuthenticated', true);
 
-      history.push('/dashboard');
+      history.push('/homepage');
     } catch (error) {
       this.setState({
         isLoading: false,
