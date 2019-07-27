@@ -21,6 +21,7 @@ const useStyles = makeStyles({
   },
   courseList: {
       paddingBottom: '60px',
+      paddingLeft: '120px'
   },
 });
 
@@ -47,10 +48,10 @@ export default function ArtCourses(props) {
         </Typography>
       </Paper>
       <Container className={classes.courseList}>
-        <div className="row" style={{ marginTop: '25px', padding: 'auto' }}>
+        <div className="row" style={{ marginTop: '15px', padding: 'auto' }}>
           {courseList.map(courseList => {
             return (
-              <div className="col-4" style={{ paddingTop: '20px' }}>
+              <div className="col-4" style={{ paddingTop: '35px' }}>
                 <Card className={classes.card}>
                   <CardActionArea>
                     <CardMedia

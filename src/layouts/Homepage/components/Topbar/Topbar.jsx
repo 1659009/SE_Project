@@ -150,7 +150,7 @@ export default function Topbar(props) {
             Explore
           </Button>
           <Menu
-            style={{ marginTop: '50px' }}
+            style={{ marginTop: '40px' }}
             id="simple-menu"
             anchorEl={anchorEl}
             keepMounted

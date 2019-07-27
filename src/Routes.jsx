@@ -21,6 +21,7 @@ import Datascienceview from 'views/Courselists/DataScience/Datascienceview';
 import Healthview from 'views/Courselists/Health/Healthview';
 import Languageview from 'views/Courselists/Language/Languageview';
 import Malview from 'views/Courselists/MathAndLogic/Malview';
+import Coursedetailsview from 'views/CourseDetails/Coursedetailsview';
 
 export default class Routes extends Component {
   render() {
@@ -70,6 +71,11 @@ export default class Routes extends Component {
           component={Malview}
           exact
           path="/malcourse"
+        />
+        <Route
+          component={Coursedetailsview}
+          exact
+          path="/coursedetail"
         />
         <Route
           component={Dashboard}

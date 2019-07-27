@@ -1,0 +1,80 @@
+
+
+.headerDescription{
+    background: linear-gradient(90deg, #1F70C1, #00000025);
+    height: 42vh;
+    position: relative;
+
+}
+
+.listItemLeft{
+    position: absolute;
+    width: 100vh;
+    height: 37vh;
+    top: 30px;
+    left: 60px;
+}
+
+.listItemRight{
+    position: absolute;
+    width: 90vh;
+    height: 37vh;
+    top: 30px;
+    right: 60px;
+}
+
+.previousPath{
+    color: white !important;
+    text-decoration: none !important;
+
+}
+
+.courseTitle{
+    color: white !important;
+    word-break: break-all;
+    font-weight: bold;
+}
+
+.courseShortDescription{
+    font-size: 14px;
+    color: white;
+    word-break: break-all;
+    width: 90vh;
+    height: 5vh;;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin-bottom: 25px;
+}
+
+.courseEnroll{
+    display: flex;
+    list-style-type: none;
+}
+
+.enrollButton{
+    width: 180px;
+    height: 60px;
+    background: #e9e5fd !important;
+
+    color: black !important;
+    
+}
+
+.enrollNumber{
+    margin-top: -5px;
+    font-size: 20px;
+    color:white;
+}
+
+.courseProvider{
+    font-size: 20px;
+    color:white;
+    margin-left: 50px;
+}
+
+.courseProviderLogo{
+    margin-top: -30px;
+    margin-left: 40px;
+    width: 250px;
+    height: 150px;
+}
