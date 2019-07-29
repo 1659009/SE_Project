@@ -6,11 +6,14 @@ import { Redirect } from 'react-router-dom';
 
 import Link from '@material-ui/core/Link';
 
-import { fade, makeStyles } from '@material-ui/core/styles';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import IconButton from '@material-ui/core/IconButton';
+import Homepage from 'layouts/Homepage/Homepage';
+import Footer from '../../Footer/Footer';
+
+
 
 // const useStyles = makeStyles(theme => ({
 //   profileBtn: {
@@ -50,6 +53,7 @@ export default class Profile extends React.Component {
 
     return (
       <div>
+        <Homepage />
         <IconButton
           color="inherit"
           onClick={e => {
@@ -67,10 +71,13 @@ export default class Profile extends React.Component {
           keepMounted
           open={this.state.open}
           onClose={this.handleClose}>
-          <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+          <Link component={homeLink} to="/account-profile">
+            <MenuItem>Profile</MenuItem>
+          </Link>
           <MenuItem onClick={this.handleClose}>My account</MenuItem>
           <MenuItem onClick={this.handLogout}>Logout</MenuItem>
         </Menu>
+        <Footer/>
       </div>
     );
   }
