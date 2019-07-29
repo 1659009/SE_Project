@@ -32,7 +32,12 @@ export default function RecommendCourse(props) {
   return (
     <div>
       <Paper
-        style={{ height: '10vh', position: 'relative', background: '#d0b808' }}>
+        style={{
+          height: '6vh',
+          position: 'relative',
+          background: '#d0b808',
+          marginTop: '50px'
+        }}>
         <Typography
           style={{
             color: '#2F4F4F',

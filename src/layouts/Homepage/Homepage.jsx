@@ -5,39 +5,32 @@ import Topbar from './components/Topbar/Topbar';
 export default function Homepage() {
   const options = [
     {
-      id: '3000000001',
       title: 'Arts',
-      link: '/artcourse'
+      link: '/course/3000000001'
     },
     {
-      id: '3000000002',
       title: 'Business',
-      link: '/businesscourse'
+      link: '/course/3000000002'
     },
     {
-      id: '3000000003',
       title: 'Computer Science',
-      link: '/cscourse'
+      link: '/course/3000000003'
     },
     {
-      id: '3000000004',
       title: 'Data Science',
-      link: '/dscourse'
+      link: '/course/3000000004'
     },
     {
-      id: '3000000005',
       title: 'Health',
-      link: '/healthcourse'
+      link: '/course/3000000005'
     },
     {
-      id: '3000000006',
       title: 'Math & Logic',
-      link: '/malcourse'
+      link: '/course/3000000006'
     },
     {
-      id: '3000000007',
       title: 'Language Learning',
-      link: '/languagecourse'
+      link: '/course/3000000007'
     }
   ];
   return (

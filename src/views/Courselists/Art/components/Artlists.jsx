@@ -40,38 +40,74 @@ export default class ArtCourses extends React.Component {
     super(props);
     this.state = {
       list: [],
-      isLoading: false
+      topic: '',
+      isLoading: true
     };
   }
   componentWillMount() {
-    id = window.location.search.split('=')[1];
+    id = window.location.href.split('/')[4];
+  }
+  componentDidMount() {
     let link = 'http://192.168.1.6:8080/course/' + id;
     axios
       .get(link, {})
-      .then(function(response) {
-        console.log(response);
-        if (response.status == 200) {
+      .then(response => {
+        if (response.status === 200) {
           console.log('success');
-          // history.push(link);
+          this.setState({
+            list: response.data.course_list,
+            topic: response.data.course_topic,
+            isLoading: false
+          });
         }
       })
-      .catch(function(error) {
-        console.log(error);
-      });
+      .catch(function(error) {});
   }
+
+  forceUpdateHandler = () => {
+    this.forceUpdate();
+  };
+
+  renderItem(item) {
+    const { id, name, short_desc, image } = item;
+    return (
+      <div className="col-4" style={{ paddingTop: '35px' }}>
+        <Card>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              alt="Contemplative Reptile"
+              height="140"
+              image={image}
+              title="Contemplative Reptile"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                {name}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                {short_desc}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+      </div>
+    );
+  }
+
   render() {
-    const { courseList } = this.props;
-    const { isLoading } = this.state;
-    console.log(this.props);
+    const { isLoading, list, topic } = this.state;
+
+    console.log(this.state);
     return (
       <div>
-        {!isLoading ? (
-          <div>Loading...</div>
+        {isLoading ? (
+          <div style={{ textAlign: 'center' }}>Loading...</div>
         ) : (
           <div>
             <Paper
               style={{
-                height: '10vh',
+                height: '6vh',
                 position: 'relative',
                 background: '#d0b808'
               }}>
@@ -86,43 +122,15 @@ export default class ArtCourses extends React.Component {
                   fontWeight: 'Bold'
                 }}
                 variant="h1">
-                ARTS
+                {topic}
               </Typography>
             </Paper>
             <Container>
               <div
                 className="row"
                 style={{ marginTop: '15px', padding: 'auto' }}>
-                {courseList.map(courseList => {
-                  return (
-                    <div className="col-4" style={{ paddingTop: '35px' }}>
-                      <Card>
-                        <CardActionArea>
-                          <CardMedia
-                            component="img"
-                            alt="Contemplative Reptile"
-                            height="140"
-                            image="https://ak0.picdn.net/shutterstock/videos/8911510/thumb/1.jpg"
-                            title="Contemplative Reptile"
-                          />
-                          <CardContent>
-                            <Typography
-                              gutterBottom
-                              variant="h5"
-                              component="h2">
-                              {courseList.title}
-                            </Typography>
-                            <Typography
-                              variant="body2"
-                              color="textSecondary"
-                              component="p">
-                              {courseList.content}
-                            </Typography>
-                          </CardContent>
-                        </CardActionArea>
-                      </Card>
-                    </div>
-                  );
+                {list.map(item => {
+                  return this.renderItem(item);
                 })}
               </div>
             </Container>
