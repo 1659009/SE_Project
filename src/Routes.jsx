@@ -30,13 +30,17 @@ export default class Routes extends Component {
       <Switch>
         <Redirect exact from="/" to="/homepage" />
         <Route component={Homepageview} exact path="/homepage" />
-        <Route component={Artview} exact path="/artcourse" />
-        <Route component={Businessview} exact path="/businesscourse" />
-        <Route component={Computerscienceview} exact path="/cscourse" />
-        <Route component={Datascienceview} exact path="/dscourse" />
-        <Route component={Healthview} exact path="/healthcourse" />
-        <Route component={Languageview} exact path="/languagecourse" />
-        <Route component={Malview} exact path="/malcourse" />
+        <Route component={Artview} exact path="/course/3000000001" />
+        <Route component={Businessview} exact path="/course/3000000002" />
+        <Route
+          component={Computerscienceview}
+          exact
+          path="/course/3000000003"
+        />
+        <Route component={Datascienceview} exact path="/course/3000000004" />
+        <Route component={Healthview} exact path="/course/3000000005" />
+        <Route component={Languageview} exact path="/course/3000000006" />
+        <Route component={Malview} exact path="/course/3000000007" />
         <Route component={Coursedetailsview} exact path="/coursedetail" />
         <Route component={Dashboard} exact path="/dashboard" />
         <Route component={UserList} exact path="/users" />

@@ -1,8 +1,7 @@
 import React from 'react';
 
 import { MemoryRouter as Router } from 'react-router';
-import { Link as RouterLink } from 'react-router-dom';
-import Link from '@material-ui/core/Link';
+import { Link } from 'react-router-dom';
 
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -125,9 +124,6 @@ export default function Topbar(props) {
   }
 
   const { options } = props;
-  const homeLink = React.forwardRef((props, ref) => (
-    <RouterLink innerRef={ref} {...props} />
-  ));
 
   const isLogin = localStorage.getItem('isLogin');
 
@@ -163,10 +159,7 @@ export default function Topbar(props) {
             onClose={handleClose}>
             {options.map(option => {
               return (
-                <Link
-                  component={homeLink}
-                  to={option.link}
-                  className={classes.link}>
+                <Link to={option.link} className={classes.link}>
                   <MenuItem onClick={handleClose}>{option.title}</MenuItem>
                 </Link>
               );
@@ -189,23 +182,17 @@ export default function Topbar(props) {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <MenuList className={classes.menuList}>
-              <Link
-                component={homeLink}
-                to="/homepage"
-                className={classes.link}>
+              <Link to="/homepage" className={classes.link}>
                 <MenuItem className={classes.menuItems}>Home</MenuItem>
               </Link>
-              <Link component={homeLink} to="/" className={classes.link}>
+              <Link to="/homepage" className={classes.link}>
                 <MenuItem className={classes.menuItems}>About us</MenuItem>
               </Link>
-              <Link component={homeLink} to="/" className={classes.link}>
+              <Link to="/homepage" className={classes.link}>
                 <MenuItem className={classes.menuItems}>FAQ</MenuItem>
               </Link>
               {!isLogin ? (
-                <Link
-                  component={homeLink}
-                  to="/sign-in"
-                  className={classes.link}>
+                <Link to="/sign-in" className={classes.link}>
                   <MenuItem className={classes.menuItems}>Login</MenuItem>
                 </Link>
               ) : (
