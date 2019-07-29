@@ -1,80 +1,91 @@
-
-
-.headerDescription{
-    background: linear-gradient(90deg, #1F70C1, #00000025);
-    height: 42vh;
-    position: relative;
-
+.headerDescription {
+  background: linear-gradient(90deg, #1f70c1, #00000025);
+  height: 32vh;
+  position: relative;
 }
 
-.listItemLeft{
-    position: absolute;
-    width: 100vh;
-    height: 37vh;
-    top: 30px;
-    left: 60px;
+.listItemLeft {
+  position: absolute;
+  width: 100vh;
+  height: 25vh;
+  top: 30px;
+  left: 40px;
 }
 
-.listItemRight{
-    position: absolute;
-    width: 90vh;
-    height: 37vh;
-    top: 30px;
-    right: 60px;
+.listItemRight {
+  position: absolute;
+  width: 90vh;
+  height: 25vh;
+  top: 30px;
+  right: 100px;
 }
 
-.previousPath{
-    color: white !important;
-    text-decoration: none !important;
-
+.previousPath {
+  color: white !important;
+  text-decoration: none !important;
 }
 
-.courseTitle{
-    color: white !important;
-    word-break: break-all;
-    font-weight: bold;
+.courseInformation {
+  padding-top: 45px;
 }
 
-.courseShortDescription{
-    font-size: 14px;
-    color: white;
-    word-break: break-all;
-    width: 90vh;
-    height: 5vh;;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    margin-bottom: 25px;
+.courseTitle {
+  color: white !important;
+  word-break: break-all;
+  font-weight: bold;
 }
 
-.courseEnroll{
-    display: flex;
-    list-style-type: none;
+.courseShortDescription {
+  font-size: 14px;
+  color: white;
+  word-break: break-all;
+  width: 68vh;
+  height: 5vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  margin-bottom: 25px;
 }
 
-.enrollButton{
-    width: 180px;
-    height: 60px;
-    background: #e9e5fd !important;
-
-    color: black !important;
-    
+.courseEnroll {
+  display: flex;
+  list-style-type: none;
 }
 
-.enrollNumber{
-    margin-top: -5px;
-    font-size: 20px;
-    color:white;
+.enrollButton {
+  width: 150px;
+  height: 40px;
+  background: #e9e5fd !important;
+  font-size: 15px;
+  color: black !important;
 }
 
-.courseProvider{
-    font-size: 20px;
-    color:white;
-    margin-left: 50px;
+.enrollNumber {
+  margin-top: -5px;
+  font-size: 20px;
+  color: white;
 }
 
-.courseProviderLogo{
-    margin-top: -30px;
-    margin-left: 40px;
-    width: 250px;
-    height: 150px;
+.courseProvider {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  margin-left: 0px;
+}
+
+.courseProviderLogo {
+  margin-top: -30px;
+  margin-left: -10px;
+  width: 250px;
+  height: 150px;
+}
+
+.categoryHeader {
+  text-align: center !important;
+  width: 60vh;
+  font-size: 20px;
+}
+
+.categoryInformation {
+  font-size: 20px;
+  text-align: center !important;
 }

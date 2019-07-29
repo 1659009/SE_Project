@@ -20,7 +20,8 @@ const useStyles = makeStyles({
     marginLeft: '40px'
   },
   courseList: {
-    paddingBottom: '60px'
+    paddingBottom: '60px',
+    paddingLeft: '120px'
   }
 });
 

@@ -90,6 +90,7 @@ const useStyles = makeStyles(theme => ({
   },
   categorize: {
     marginLeft: theme.spacing(3),
+    width: '150px',
     '&:hover': {
       background: '#d0b808',
       color: 'black !important'
@@ -111,6 +112,8 @@ export default function Topbar(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
+  // localStorage.setItem('isLogin', '0');
+
   const isMenuOpen = Boolean(anchorEl);
 
   function handleClickEvent(event) {
@@ -125,6 +128,8 @@ export default function Topbar(props) {
   const homeLink = React.forwardRef((props, ref) => (
     <RouterLink innerRef={ref} {...props} />
   ));
+
+  const isLogin = localStorage.getItem('isLogin');
 
   return (
     <div className={classes.grow}>
@@ -157,7 +162,14 @@ export default function Topbar(props) {
             open={Boolean(anchorEl)}
             onClose={handleClose}>
             {options.map(option => {
-              return <Link component={homeLink} to={option.link} className={classes.link}><MenuItem onClick={handleClose}>{option.title}</MenuItem></Link>;
+              return (
+                <Link
+                  component={homeLink}
+                  to={option.link}
+                  className={classes.link}>
+                  <MenuItem onClick={handleClose}>{option.title}</MenuItem>
+                </Link>
+              );
             })}
           </Menu>
 
@@ -189,8 +201,18 @@ export default function Topbar(props) {
               <Link component={homeLink} to="/" className={classes.link}>
                 <MenuItem className={classes.menuItems}>FAQ</MenuItem>
               </Link>
+              {!isLogin ? (
+                <Link
+                  component={homeLink}
+                  to="/sign-in"
+                  className={classes.link}>
+                  <MenuItem className={classes.menuItems}>Login</MenuItem>
+                </Link>
+              ) : (
+                <div style={{ display: 'none' }} />
+              )}
             </MenuList>
-            <Profile />
+            {isLogin ? <Profile /> : <div style={{ display: 'none' }} />}
           </div>
         </Toolbar>
       </AppBar>

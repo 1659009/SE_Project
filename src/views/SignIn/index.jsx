@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import axios from 'axios';
 
 // Externals
 import PropTypes from 'prop-types';
@@ -43,21 +44,8 @@ const signIn = () => {
 
 class SignIn extends Component {
   state = {
-    values: {
-      email: '',
-      password: ''
-    },
-    touched: {
-      email: false,
-      password: false
-    },
-    errors: {
-      email: null,
-      password: null
-    },
-    isValid: false,
-    isLoading: false,
-    submitError: null
+    email: '',
+    password: ''
   };
 
   handleBack = () => {
@@ -66,224 +54,136 @@ class SignIn extends Component {
     history.goBack();
   };
 
-  validateForm = _.debounce(() => {
-    const { values } = this.state;
+  // validateForm = _.debounce(() => {
+  //   const { values } = this.state;
 
-    const newState = { ...this.state };
-    const errors = validate(values, schema);
+  //   const newState = { ...this.state };
+  //   const errors = validate(values, schema);
 
-    newState.errors = errors || {};
-    newState.isValid = errors ? false : true;
+  //   newState.errors = errors || {};
+  //   newState.isValid = errors ? false : true;
 
-    this.setState(newState);
-  }, 300);
+  //   this.setState(newState);
+  // }, 300);
 
-  handleFieldChange = (field, value) => {
-    const newState = { ...this.state };
-
-    newState.submitError = null;
-    newState.touched[field] = true;
-    newState.values[field] = value;
-
-    this.setState(newState, this.validateForm);
+  handleEmail = value => {
+    this.setState({ email: value });
+  };
+  handlePassword = value => {
+    this.setState({ password: value });
   };
 
-  handleSignIn = async () => {
-    try {
-      const { history } = this.props;
-      const { values } = this.state;
-
-      this.setState({ isLoading: true });
-
-      await signIn(values.email, values.password);
-
-      localStorage.setItem('isAuthenticated', true);
-
-      history.push('/homepage');
-    } catch (error) {
-      this.setState({
-        isLoading: false,
-        serviceError: error
+  handleSignIn = () => {
+    const { history } = this.props;
+    const { email, password } = this.state;
+    axios
+      .post('http://192.168.1.6:8080/login', {
+        email: email,
+        password: password
+      })
+      .then(function(response) {
+        console.log(response);
+        if (response.status == 200) {
+          console.log('success');
+          localStorage.removeItem('isLogin');
+          localStorage.setItem('isLogin', true);
+          history.push('/homepage');
+        }
+      })
+      .catch(function(error) {
+        console.log(error);
       });
-    }
+    // axios({
+    //   method: 'post',
+    //   url: 'http://192.168.122.1/login',
+    //   data: {
+    //     email: email,
+    //     password: password
+    //   }
+    // });
   };
 
   render() {
     const { classes } = this.props;
-    const {
-      values,
-      touched,
-      errors,
-      isValid,
-      submitError,
-      isLoading
-    } = this.state;
-
-    const showEmailError = touched.email && errors.email;
-    const showPasswordError = touched.password && errors.password;
+    const { email, password } = this.state;
+    console.log(this.state);
 
     return (
       <div className={classes.root}>
-        <Grid
-          className={classes.grid}
-          container
-        >
-          <Grid
-            className={classes.quoteWrapper}
-            item
-            lg={5}
-          >
+        <Grid className={classes.grid} container>
+          <Grid className={classes.quoteWrapper} item lg={5}>
             <div className={classes.quote}>
               <div className={classes.quoteInner}>
-                <Typography
-                  className={classes.quoteText}
-                  variant="h1"
-                >
+                <Typography className={classes.quoteText} variant="h1">
                   Hella narwhal Cosby sweater McSweeney's, salvia kitsch before
                   they sold out High Life.
                 </Typography>
                 <div className={classes.person}>
-                  <Typography
-                    className={classes.name}
-                    variant="body1"
-                  >
+                  <Typography className={classes.name} variant="body1">
                     Takamaru Ayako
                   </Typography>
-                  <Typography
-                    className={classes.bio}
-                    variant="body2"
-                  >
+                  <Typography className={classes.bio} variant="body2">
                     Manager at inVision
                   </Typography>
                 </div>
               </div>
             </div>
           </Grid>
-          <Grid
-            className={classes.content}
-            item
-            lg={7}
-            xs={12}
-          >
+          <Grid className={classes.content} item lg={7} xs={12}>
             <div className={classes.content}>
               <div className={classes.contentHeader}>
                 <IconButton
                   className={classes.backButton}
-                  onClick={this.handleBack}
-                >
+                  onClick={this.handleBack}>
                   <ArrowBackIcon />
                 </IconButton>
               </div>
               <div className={classes.contentBody}>
                 <form className={classes.form}>
-                  <Typography
-                    className={classes.title}
-                    variant="h2"
-                  >
+                  <Typography className={classes.title} variant="h2">
                     Sign in
                   </Typography>
-                  <Typography
-                    className={classes.subtitle}
-                    variant="body1"
-                  >
-                    Sign in with social media
-                  </Typography>
+
+                  <div className={classes.fields}>
+                    <TextField
+                      id="outlined-email-input"
+                      label="Email"
+                      className={classes.textField}
+                      type="email"
+                      name="email"
+                      autoComplete="email"
+                      margin="normal"
+                      variant="outlined"
+                      value={email}
+                      onChange={event => this.handleEmail(event.target.value)}
+                    />
+                    <TextField
+                      id="outlined-password-input"
+                      label="Password"
+                      className={classes.textField}
+                      type="password"
+                      autoComplete="current-password"
+                      margin="normal"
+                      variant="outlined"
+                      value={password}
+                      onChange={event =>
+                        this.handlePassword(event.target.value)
+                      }
+                    />
+                  </div>
+
                   <Button
-                    className={classes.facebookButton}
+                    className={classes.signInButton}
                     color="primary"
                     onClick={this.handleSignIn}
                     size="large"
-                    variant="contained"
-                  >
-                    <FacebookIcon className={classes.facebookIcon} />
-                    Login with Facebook
+                    variant="contained">
+                    Sign in now
                   </Button>
-                  <Button
-                    className={classes.googleButton}
-                    onClick={this.handleSignIn}
-                    size="large"
-                    variant="contained"
-                  >
-                    <GoogleIcon className={classes.googleIcon} />
-                    Login with Google
-                  </Button>
-                  <Typography
-                    className={classes.sugestion}
-                    variant="body1"
-                  >
-                    or login with email address
-                  </Typography>
-                  <div className={classes.fields}>
-                    <TextField
-                      className={classes.textField}
-                      label="Email address"
-                      name="email"
-                      onChange={event =>
-                        this.handleFieldChange('email', event.target.value)
-                      }
-                      type="text"
-                      value={values.email}
-                      variant="outlined"
-                    />
-                    {showEmailError && (
-                      <Typography
-                        className={classes.fieldError}
-                        variant="body2"
-                      >
-                        {errors.email[0]}
-                      </Typography>
-                    )}
-                    <TextField
-                      className={classes.textField}
-                      label="Password"
-                      name="password"
-                      onChange={event =>
-                        this.handleFieldChange('password', event.target.value)
-                      }
-                      type="password"
-                      value={values.password}
-                      variant="outlined"
-                    />
-                    {showPasswordError && (
-                      <Typography
-                        className={classes.fieldError}
-                        variant="body2"
-                      >
-                        {errors.password[0]}
-                      </Typography>
-                    )}
-                  </div>
-                  {submitError && (
-                    <Typography
-                      className={classes.submitError}
-                      variant="body2"
-                    >
-                      {submitError}
-                    </Typography>
-                  )}
-                  {isLoading ? (
-                    <CircularProgress className={classes.progress} />
-                  ) : (
-                    <Button
-                      className={classes.signInButton}
-                      color="primary"
-                      disabled={!isValid}
-                      onClick={this.handleSignIn}
-                      size="large"
-                      variant="contained"
-                    >
-                      Sign in now
-                    </Button>
-                  )}
-                  <Typography
-                    className={classes.signUp}
-                    variant="body1"
-                  >
+
+                  <Typography className={classes.signUp} variant="body1">
                     Don't have an account?{' '}
-                    <Link
-                      className={classes.signUpUrl}
-                      to="/sign-up"
-                    >
+                    <Link className={classes.signUpUrl} to="/sign-up">
                       Sign up
                     </Link>
                   </Typography>
@@ -296,12 +196,6 @@ class SignIn extends Component {
     );
   }
 }
-
-SignIn.propTypes = {
-  className: PropTypes.string,
-  classes: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired
-};
 
 export default compose(
   withRouter,

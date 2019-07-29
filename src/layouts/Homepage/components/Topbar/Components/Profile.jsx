@@ -2,6 +2,8 @@ import React from 'react';
 
 import { MemoryRouter as Router } from 'react-router';
 import { Link as RouterLink } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+
 import Link from '@material-ui/core/Link';
 
 import { fade, makeStyles } from '@material-ui/core/styles';
@@ -10,58 +12,66 @@ import MenuItem from '@material-ui/core/MenuItem';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import IconButton from '@material-ui/core/IconButton';
 
-const useStyles = makeStyles(theme => ({
-  profileBtn: {
-    '&:focus': { outline: 'none !important' }
-  },
-  link:{
-    color:'black',
-    '&:hover': {
-      color:'black',
-      textDecoration:'none',
-    }
+// const useStyles = makeStyles(theme => ({
+//   profileBtn: {
+//     '&:focus': { outline: 'none !important' }
+//   },
+//   link: {
+//     color: 'black',
+//     '&:hover': {
+//       color: 'black',
+//       textDecoration: 'none'
+//     }
+//   }
+// }));
+// const classes = useStyles();
+
+export default class Profile extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { open: false, anchorEl: '' };
   }
-}));
+  handleClick = event => {
+    this.setState({ open: true, anchorEl: event.target });
+  };
 
-export default function Profile() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const classes = useStyles();
-  const homeLink = React.forwardRef((props, ref) => (
-    <RouterLink innerRef={ref} {...props} />
-  ));
+  handLogout = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
 
-  function handleClick(event) {
-    setAnchorEl(event.currentTarget);
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+  render() {
+    const homeLink = React.forwardRef((props, ref) => (
+      <RouterLink innerRef={ref} {...props} />
+    ));
+
+    return (
+      <div>
+        <IconButton
+          color="inherit"
+          onClick={e => {
+            this.handleClick(e);
+          }}
+          // className={classes.profileBtn}
+        >
+          <AccountCircle />
+        </IconButton>
+
+        <Menu
+          style={{ marginTop: '50px' }}
+          id="simple-menu"
+          anchorEl={this.state.anchorEl}
+          keepMounted
+          open={this.state.open}
+          onClose={this.handleClose}>
+          <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+          <MenuItem onClick={this.handleClose}>My account</MenuItem>
+          <MenuItem onClick={this.handLogout}>Logout</MenuItem>
+        </Menu>
+      </div>
+    );
   }
-
-  function handleClose() {
-    setAnchorEl(null);
-  }
-
-  return (
-    <div>
-      <IconButton
-        color="inherit"
-        onClick={handleClick}
-        className={classes.profileBtn}>
-        <AccountCircle />
-      </IconButton>
-
-      <Menu
-        style={{ marginTop: '50px' }}
-        id="simple-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}>
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>
-        <Link component={homeLink} to="/sign-in" className={classes.link}>
-        Logout
-        </Link>
-        </MenuItem>
-      </Menu>
-    </div>
-  );
 }
