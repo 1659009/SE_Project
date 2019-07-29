@@ -49,7 +49,7 @@ export default class Routes extends Component {
         <Route component={SignIn} exact path="/sign-in" />
         <Route component={UnderDevelopment} exact path="/under-development" />
         <Route component={NotFound} exact path="/not-found" />
-        <Route component={AccountProfile} exact path="/account-profile" />
+        <Route component={Account} exact path="/account-profile" />
         <Redirect to="/not-found" />
       </Switch>
     );

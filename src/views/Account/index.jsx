@@ -8,7 +8,8 @@ import { withStyles } from '@material-ui/core';
 
 // Material components
 import { Grid } from '@material-ui/core';
-
+import Footer from 'layouts/Homepage/components/Footer/Footer';
+import Homepage from 'layouts/Homepage/Homepage';
 // Shared layouts
 import { Dashboard as DashboardLayout } from 'layouts';
 
@@ -29,33 +30,21 @@ class Account extends Component {
     const { classes } = this.props;
 
     return (
-      <DashboardLayout title="Account">
-        <div className={classes.root}>
-          <Grid
-            container
-            spacing={4}
-          >
-            <Grid
-              item
-              lg={4}
-              md={6}
-              xl={4}
-              xs={12}
-            >
-              <AccountProfile />
-            </Grid>
-            <Grid
-              item
-              lg={8}
-              md={6}
-              xl={8}
-              xs={12}
-            >
-              <AccountDetails />
-            </Grid>
+      <div>
+        <Homepage />
+        <Grid
+          container
+          spacing={4}
+          style={{ height: '70vh', padding: '50px 100px' }}>
+          <Grid item lg={4} md={6} xl={4} xs={12}>
+            <AccountProfile />
           </Grid>
-        </div>
-      </DashboardLayout>
+          <Grid item lg={8} md={6} xl={8} xs={12}>
+            <AccountDetails />
+          </Grid>
+        </Grid>
+        <Footer />
+      </div>
     );
   }
 }

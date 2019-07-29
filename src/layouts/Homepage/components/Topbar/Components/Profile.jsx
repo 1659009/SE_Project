@@ -1,10 +1,8 @@
 import React from 'react';
 
 import { MemoryRouter as Router } from 'react-router';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
-
-import Link from '@material-ui/core/Link';
 
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -13,11 +11,9 @@ import IconButton from '@material-ui/core/IconButton';
 import Homepage from 'layouts/Homepage/Homepage';
 import Footer from '../../Footer/Footer';
 
-
-
 // const useStyles = makeStyles(theme => ({
 //   profileBtn: {
-//     '&:focus': { outline: 'none !important' }
+//     '&:focus': { outline: 'none !imp ortant' }
 //   },
 //   link: {
 //     color: 'black',
@@ -47,13 +43,8 @@ export default class Profile extends React.Component {
     this.setState({ open: false });
   };
   render() {
-    const homeLink = React.forwardRef((props, ref) => (
-      <RouterLink innerRef={ref} {...props} />
-    ));
-
     return (
       <div>
-        <Homepage />
         <IconButton
           color="inherit"
           onClick={e => {
@@ -71,13 +62,11 @@ export default class Profile extends React.Component {
           keepMounted
           open={this.state.open}
           onClose={this.handleClose}>
-          <Link component={homeLink} to="/account-profile">
+          <Link to="/account-profile">
             <MenuItem>Profile</MenuItem>
           </Link>
-          <MenuItem onClick={this.handleClose}>My account</MenuItem>
           <MenuItem onClick={this.handLogout}>Logout</MenuItem>
         </Menu>
-        <Footer/>
       </div>
     );
   }
