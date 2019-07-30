@@ -56,6 +56,36 @@ class Detailheader extends Component {
     });
   };
 
+  handleSave = course_id => {
+    let link = Api.link + 'save-course';
+    let id = axios
+      .post(link, {
+        user_id: parseInt(this.state.user_id),
+        course_id: course_id
+      })
+      .then(response => {
+        console.log(response);
+        if (response.status == 200) {
+          notification['success']({
+            message: 'Save course success.'
+          });
+        }
+      })
+      .catch(function(error) {
+        notification['error']({
+          message: 'You have already savedmaxWidth this course.'
+        });
+      });
+  };
+
+  handleSaveFail = () => {
+    console.log('fail');
+
+    notification['error']({
+      message: 'Please login before enroll.'
+    });
+  };
+
   render() {
     const { id, name, description, image } = this.props.info;
     console.log(this.state);
@@ -67,9 +97,7 @@ class Detailheader extends Component {
             height: '10vh',
             position: 'relative',
             background: '#d0b808',
-            margin: '2px auto 0px auto',
-            minWidth: '1217px',
-            maxWidth: 'calc(100% - 32.6vw)'
+            margin: '2px auto 0px auto'
           }}>
           <Typography
             style={{
@@ -86,53 +114,60 @@ class Detailheader extends Component {
             {name}
           </Typography>
         </Paper>
-        <Container
+
+        <div
           style={{
-            paddingBottom: '0px',
-            marginTop: '2px'
+            backgroundColor: '#eaded3'
           }}>
-          <Grid container className="headerDescription" spacing={1}>
-            <Grid item className="listItemLeft" xs={6}>
-              <img
-                className="courseProviderLogo"
-                src={image}
-                alt="course logo"
-                width="500px"
-              />
-            </Grid>
-            <Grid item className="listItemRight" xs={6}>
-              <div className="courseInformation">
-                <h2 className="courseTitle">{name}</h2>
-                <p className="courseDescription">{description}</p>
-              </div>
-              <div className="courseEnroll">
-                <Grid container spacing={3}>
-                  <Grid item xs={3}>
-                    <Button
-                      size="large"
-                      className="enrollButton"
-                      onClick={() => {
-                        this.state.isLogin
-                          ? this.handleEnroll(id)
-                          : this.handleEnrollFail();
-                      }}
-                      style={{ backgroundColor: '#D0B808', color: 'white' }}>
-                      Enroll Now
-                    </Button>
+          <Container>
+            <Grid container className="headerDescription" spacing={1}>
+              <Grid item className="listItemLeft" xs={6}>
+                <img
+                  className="courseProviderLogo"
+                  src={image}
+                  alt="course logo"
+                  width="500px"
+                />
+              </Grid>
+              <Grid item className="listItemRight" xs={6}>
+                <div className="courseInformation">
+                  <h2 className="courseTitle">{name}</h2>
+                  <p className="courseDescription">{description}</p>
+                </div>
+                <div className="courseEnroll">
+                  <Grid container spacing={3}>
+                    <Grid item xs={3}>
+                      <Button
+                        size="large"
+                        className="enrollButton"
+                        onClick={() => {
+                          this.state.isLogin
+                            ? this.handleEnroll(id)
+                            : this.handleEnrollFail();
+                        }}
+                        style={{ backgroundColor: '#D0B808', color: 'white' }}>
+                        Enroll Now
+                      </Button>
+                    </Grid>
+                    <Grid item xs={3}>
+                      <Button
+                        size="large"
+                        className="enrollButton"
+                        onClick={() => {
+                          this.state.isLogin
+                            ? this.handleSave(id)
+                            : this.handleSaveFail();
+                        }}
+                        style={{ backgroundColor: '#D0B808', color: 'white' }}>
+                        Save Course
+                      </Button>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={3}>
-                    <Button
-                      size="large"
-                      className="enrollButton"
-                      style={{ backgroundColor: '#D0B808', color: 'white' }}>
-                      Save Course
-                    </Button>
-                  </Grid>
-                </Grid>
-              </div>
+                </div>
+              </Grid>
             </Grid>
-          </Grid>
-        </Container>
+          </Container>
+        </div>
       </div>
     );
   }

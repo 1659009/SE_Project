@@ -13,11 +13,7 @@ import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles({
   card: {
-    maxWidth: 300,
-    Height: 200
-  },
-  cardContent: {
-    marginLeft: '40px'
+    Height: 400
   },
   courseList: {
     paddingBottom: '60px',
@@ -32,37 +28,40 @@ export default function RecommendCourse(props) {
   console.log(props);
   return (
     <div>
-      <Container
+      <Paper
         style={{
-          paddingBottom: '0px'
+          height: '6vh',
+          position: 'relative',
+          background: '#d0b808'
         }}>
-        <Paper
+        <Typography
           style={{
-            height: '6vh',
-            position: 'relative',
-            background: '#d0b808'
-          }}>
-          <Typography
-            style={{
-              color: '#2F4F4F',
-              top: '50%',
-              left: '50%',
-              marginRight: '-50%',
-              transform: 'translate(-50%,-50%)',
-              position: 'absolute',
-              fontWeight: 'Bold'
-            }}
-            variant="h1">
-            RECOMMENDED COURSE
-          </Typography>
-        </Paper>
+            color: '#2F4F4F',
+            top: '50%',
+            left: '50%',
+            marginRight: '-50%',
+            transform: 'translate(-50%,-50%)',
+            position: 'absolute',
+            fontWeight: 'Bold'
+          }}
+          variant="h1">
+          RECOMMENDED COURSE
+        </Typography>
+      </Paper>
+      <div
+        style={{
+          backgroundColor: '#eaded3',
+          padding: '50px 0px 50px 0px'
+        }}>
         <Container
           className={classes.courseList}
-          style={{ marginTop: '-22px', paddingLeft: '77px' }}>
-          <div className="row" style={{ marginTop: '25px', padding: 'auto' }}>
+          style={{
+            padding: '0px 30px '
+          }}>
+          <div className="row">
             {recommendCourse.map(recommendCourse => {
               return (
-                <div className="col-4" style={{ paddingTop: '20px' }}>
+                <div className="col-4">
                   <Card className={classes.card}>
                     <CardActionArea>
                       <CardMedia
@@ -90,7 +89,7 @@ export default function RecommendCourse(props) {
             })}
           </div>
         </Container>
-      </Container>
+      </div>
     </div>
   );
 }

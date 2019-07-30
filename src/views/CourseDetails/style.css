@@ -1,7 +1,6 @@
 .headerDescription {
   height: 32vh;
   position: relative;
-  background-color: #eaded3;
 }
 
 .listItemLeft {
@@ -88,13 +87,12 @@
 }
 
 .categoryHeader {
+  width: 50%;
   text-align: center !important;
-  width: 60vh;
-  font-size: 20px;
 }
 
 .categoryInformation {
-  font-size: 20px;
+  width: 50%;
   text-align: center !important;
 }
 
@@ -103,7 +101,7 @@
 }
 
 .MuiTableCell-body {
-  font-size: 14px !important;
+  font-size: 20px !important;
   color: #2f4f4f !important;
   font-weight: 600 !important;
 }
