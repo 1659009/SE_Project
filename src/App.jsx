@@ -7,7 +7,7 @@ import { Chart } from 'react-chartjs-2';
 
 // Material helpers
 import { ThemeProvider } from '@material-ui/styles';
-
+import 'antd/dist/antd.css';
 // ChartJS helpers
 import { chartjs } from './helpers';
 

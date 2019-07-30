@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import Footer from '../../../layouts/Homepage/components/Footer/Footer';
-import Homepage from '../../../layouts/Homepage/Homepage';
+import Footer from 'layouts/Homepage/components/Footer/Footer';
+import Homepage from 'layouts/Homepage/Homepage';
 import ArtCourses from './components/Artlists';
-import RecommendView from './components/Recommedview';
+import RecommendView from 'views/Courselists/Recommedview';
 
 export default function Artview() {
   const courseList = [

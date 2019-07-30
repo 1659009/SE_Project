@@ -21,7 +21,8 @@ const useStyles = makeStyles({
   },
   courseList: {
     paddingBottom: '60px',
-    paddingLeft: '120px'
+    paddingLeft: '120px',
+    backgroundColor: '#eaded3'
   }
 });
 
@@ -31,7 +32,10 @@ export default function RecommendCourse(props) {
   console.log(props);
   return (
     <div>
-      <Container>
+      <Container
+        style={{
+          paddingBottom: '0px'
+        }}>
         <Paper
           style={{
             height: '6vh',
@@ -52,7 +56,9 @@ export default function RecommendCourse(props) {
             RECOMMENDED COURSE
           </Typography>
         </Paper>
-        <Container className={classes.courseList}>
+        <Container
+          className={classes.courseList}
+          style={{ marginTop: '-22px', paddingLeft: '77px' }}>
           <div className="row" style={{ marginTop: '25px', padding: 'auto' }}>
             {recommendCourse.map(recommendCourse => {
               return (

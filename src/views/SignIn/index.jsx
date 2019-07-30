@@ -32,7 +32,7 @@ import styles from './styles';
 
 // Form validation schema
 import schema from './schema';
-
+import { Api } from 'constants/api';
 // Service methods
 const signIn = () => {
   return new Promise(resolve => {
@@ -43,10 +43,14 @@ const signIn = () => {
 };
 
 class SignIn extends Component {
-  state = {
-    email: '',
-    password: ''
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+      user_id: 0
+    };
+  }
 
   handleBack = () => {
     const { history } = this.props;
@@ -74,19 +78,24 @@ class SignIn extends Component {
   };
 
   handleSignIn = () => {
+    let link = Api.link + 'login';
     const { history } = this.props;
     const { email, password } = this.state;
     axios
-      .post('http://192.168.1.6:8080/login', {
+      .post(link, {
         email: email,
         password: password
       })
-      .then(function(response) {
+      .then(response => {
         console.log(response);
         if (response.status == 200) {
+          console.log(response);
+
+          this.setState({ user_id: response.data.user_id });
           console.log('success');
           localStorage.removeItem('isLogin');
           localStorage.setItem('isLogin', true);
+          localStorage.setItem('user_id', this.state.user_id);
           history.push('/homepage');
         }
       })

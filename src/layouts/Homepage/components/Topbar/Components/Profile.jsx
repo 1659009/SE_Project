@@ -8,8 +8,6 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import IconButton from '@material-ui/core/IconButton';
-import Homepage from 'layouts/Homepage/Homepage';
-import Footer from '../../Footer/Footer';
 
 // const useStyles = makeStyles(theme => ({
 //   profileBtn: {

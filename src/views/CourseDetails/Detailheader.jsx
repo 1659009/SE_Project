@@ -11,63 +11,122 @@ import { MemoryRouter as Router } from 'react-router';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-
+import axios from 'axios';
+import { notification } from 'antd';
+import { Api } from 'constants/api';
+let isLoggin;
 class Detailheader extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      course_id: 0,
+      user_id: localStorage.getItem('user_id'),
+      isLogin: localStorage.getItem('isLogin'),
+      isEnrolled: false
+    };
+  }
+
+  handleEnroll = course_id => {
+    let link = Api.link + 'enroll';
+    let id = axios
+      .post(link, {
+        course_id: course_id,
+        user_id: parseInt(this.state.user_id)
+      })
+      .then(response => {
+        console.log(response);
+        if (response.status == 200) {
+          notification['success']({
+            message: 'Enroll success.'
+          });
+        }
+      })
+      .catch(function(error) {
+        notification['error']({
+          message: 'You have already enrolled this course.'
+        });
+      });
+  };
+
+  handleEnrollFail = () => {
+    console.log('fail');
+
+    notification['error']({
+      message: 'Please login before enroll.'
+    });
+  };
+
   render() {
+    const { id, name, description, image } = this.props.info;
+    console.log(this.state);
+
     return (
       <div>
-        <Container>
+        <Paper
+          style={{
+            height: '10vh',
+            position: 'relative',
+            background: '#d0b808',
+            margin: '2px auto 0px auto',
+            minWidth: '1217px',
+            maxWidth: 'calc(100% - 32.6vw)'
+          }}>
+          <Typography
+            style={{
+              color: '#2F4F4F',
+              top: '50%',
+              left: '50%',
+              marginRight: '-50%',
+              transform: 'translate(-50%,-50%)',
+              position: 'absolute',
+              fontWeight: 'Bold',
+              textTransform: 'uppercase'
+            }}
+            variant="h1">
+            {name}
+          </Typography>
+        </Paper>
+        <Container
+          style={{
+            paddingBottom: '0px',
+            marginTop: '2px'
+          }}>
           <Grid container className="headerDescription" spacing={1}>
             <Grid item className="listItemLeft" xs={6}>
-              <Breadcrumbs
-                separator={
-                  <NavigateNextIcon fontSize="small" className="previousPath" />
-                }
-                aria-label="breadcrumb">
-                <Link className="previousPath" c href="/homepage">
-                  Homepage
-                </Link>
-                <Link className="previousPath" href="/artcourse">
-                  Arts
-                </Link>
-                <Typography className="previousPath">
-                  Advanced Courses
-                </Typography>
-              </Breadcrumbs>
-              <br />
-              <p className="courseProvider">Offered By</p>
               <img
                 className="courseProviderLogo"
-                src="https://www.sisk.ie/sites/default/files/slideshow/395/930-958-origo-logo.png"
+                src={image}
                 alt="course logo"
+                width="500px"
               />
             </Grid>
             <Grid item className="listItemRight" xs={6}>
               <div className="courseInformation">
-                <h2 className="courseTitle">
-                  History of modern abstract artwork
-                </h2>
-                <p className="courseShortDescription">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Commodi exercitationem tempora, recusandae similique saepe
-                  soluta veniam, eveniet nulla ab id nobis, incidunt deleniti
-                  quod minima dicta quos officia optio! Culpa?
-                </p>
+                <h2 className="courseTitle">{name}</h2>
+                <p className="courseDescription">{description}</p>
               </div>
               <div className="courseEnroll">
                 <Grid container spacing={3}>
                   <Grid item xs={3}>
-                    <Button size="large" className="enrollButton">
+                    <Button
+                      size="large"
+                      className="enrollButton"
+                      onClick={() => {
+                        this.state.isLogin
+                          ? this.handleEnroll(id)
+                          : this.handleEnrollFail();
+                      }}
+                      style={{ backgroundColor: '#D0B808', color: 'white' }}>
                       Enroll Now
                     </Button>
                   </Grid>
-                  <Grid item xs={9}>
-                    <Button size="large" className="enrollButton">
+                  <Grid item xs={3}>
+                    <Button
+                      size="large"
+                      className="enrollButton"
+                      style={{ backgroundColor: '#D0B808', color: 'white' }}>
                       Save Course
                     </Button>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <p className="enrollNumber">10,865 already enroll </p>
                   </Grid>
                 </Grid>
               </div>

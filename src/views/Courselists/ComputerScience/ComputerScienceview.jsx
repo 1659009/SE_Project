@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import Footer from '../../../layouts/Homepage/components/Footer/Footer';
-import Homepage from '../../../layouts/Homepage/Homepage';
+import Footer from 'layouts/Homepage/components/Footer/Footer';
+import Homepage from 'layouts/Homepage/Homepage';
 import ComputerScienceCourse from './components/ComputerScienceLists';
-import RecommendView from './components/Recommedview';
+import RecommendView from 'views/Courselists/Recommedview';
 
 export default function Computerscienceview() {
   const courseList = [

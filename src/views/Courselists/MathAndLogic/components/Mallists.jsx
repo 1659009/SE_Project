@@ -1,41 +1,16 @@
 import React from 'react';
 import axios from 'axios';
-import { MemoryRouter as Router } from 'react-router';
-import { Link as RouterLink } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
+import { Redirect, withRouter } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
 import { Container, Link } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
-
-// const useStyles = makeStyles({
-//   card: {
-//     maxWidth: 300,
-//     Height: 200
-//   },
-//   cardContent: {
-//     marginLeft: '40px'
-//   },
-//   courseList: {
-//     paddingBottom: '60px',
-//     paddingLeft: '120px'
-//   },
-//   link: {
-//     textDecoration: 'none',
-//     '&hover': {
-//       textDecoration: 'none'
-//     }
-//   }
-// });
-// const classes = useStyles();
+import { Api } from 'constants/api';
 let id;
-export default class MalCourses extends React.Component {
+class MalCourses extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -48,7 +23,9 @@ export default class MalCourses extends React.Component {
     id = window.location.href.split('/')[4];
   }
   componentDidMount() {
-    let link = 'http://192.168.1.6:8080/course/' + id;
+    let link = Api.link + 'course/' + id;
+    console.log(link);
+
     axios
       .get(link, {})
       .then(response => {
@@ -68,16 +45,27 @@ export default class MalCourses extends React.Component {
     this.forceUpdate();
   };
 
-  renderItem(item) {
+  handleCourseDetail = id => {
+    const { history } = this.props;
+    const link = '/course-detail?id=' + id;
+    history.push(link);
+    // return <Redirect to={`/course-detail?id=${id}`}> </Redirect>;
+  };
+
+  renderItem(item, history) {
     const { id, name, short_desc, image } = item;
     return (
-      <div className="col-4" style={{ paddingTop: '35px' }}>
-        <Card>
-          <CardActionArea>
+      <div className="col-4" style={{ marginTop: '35px', height: '300px' }}>
+        <Card
+          style={{ height: '100%' }}
+          onClick={() => {
+            this.handleCourseDetail(id);
+          }}>
+          <CardActionArea style={{ height: '100%' }}>
             <CardMedia
               component="img"
               alt="Contemplative Reptile"
-              height="140"
+              height="200"
               image={image}
               title="Contemplative Reptile"
             />
@@ -97,10 +85,12 @@ export default class MalCourses extends React.Component {
 
   render() {
     const { isLoading, list, topic } = this.state;
-
     console.log(this.state);
     return (
-      <div>
+      <div
+        style={{
+          backgroundColor: '#eaded3'
+        }}>
         {isLoading ? (
           <div style={{ textAlign: 'center' }}>Loading...</div>
         ) : (
@@ -126,9 +116,7 @@ export default class MalCourses extends React.Component {
               </Typography>
             </Paper>
             <Container>
-              <div
-                className="row"
-                style={{ marginTop: '15px', padding: 'auto' }}>
+              <div className="row" style={{ padding: 'auto' }}>
                 {list.map(item => {
                   return this.renderItem(item);
                 })}
@@ -140,3 +128,5 @@ export default class MalCourses extends React.Component {
     );
   }
 }
+
+export default withRouter(MalCourses);

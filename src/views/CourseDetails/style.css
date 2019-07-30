@@ -1,7 +1,7 @@
 .headerDescription {
-  background: linear-gradient(90deg, #1f70c1, #00000025);
   height: 32vh;
   position: relative;
+  background-color: #eaded3;
 }
 
 .listItemLeft {
@@ -26,24 +26,33 @@
 }
 
 .courseInformation {
-  padding-top: 45px;
 }
 
 .courseTitle {
-  color: white !important;
+  color: #2f4f4f !important;
   word-break: break-all;
   font-weight: bold;
 }
 
 .courseShortDescription {
   font-size: 14px;
-  color: white;
+  color: #2f4f4f;
   word-break: break-all;
   width: 68vh;
   height: 5vh;
   overflow-x: hidden;
   overflow-y: hidden;
   margin-bottom: 25px;
+}
+
+.courseDescription {
+  font-size: 14px;
+  color: #2f4f4f;
+  word-break: break-all;
+  width: 60vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  text-align: justify;
 }
 
 .courseEnroll {
@@ -54,9 +63,7 @@
 .enrollButton {
   width: 150px;
   height: 40px;
-  background: #e9e5fd !important;
   font-size: 15px;
-  color: black !important;
 }
 
 .enrollNumber {
@@ -73,10 +80,11 @@
 }
 
 .courseProviderLogo {
-  margin-top: -30px;
+  margin-top: -10px;
   margin-left: -10px;
-  width: 250px;
-  height: 150px;
+  width: 400px;
+  height: 254px;
+  object-fit: cover;
 }
 
 .categoryHeader {
@@ -88,4 +96,27 @@
 .categoryInformation {
   font-size: 20px;
   text-align: center !important;
+}
+
+.MuiTableRow-root {
+  border-bottom: 2px solid white;
+}
+
+.MuiTableCell-body {
+  font-size: 14px !important;
+  color: #2f4f4f !important;
+  font-weight: 600 !important;
+}
+
+.MuiContainer-root.MuiContainer-maxWidthLg {
+  padding: 0px 0px 50px 0px;
+}
+
+#detail-course > div.MuiContainer-root.MuiContainer-maxWidthLg {
+  padding: 0px 32px 0px 32px;
+}
+
+.MuiGrid-spacing-xs-1 {
+  width: 100% !important;
+  margin: 0px !important;
 }

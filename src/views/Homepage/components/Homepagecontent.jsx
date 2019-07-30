@@ -25,42 +25,58 @@ export default function ImgMediaCard(props) {
   const { data } = props;
   console.log(props);
   return (
-    <div>
-    <Paper style={{height:'10vh', position:'relative',background:'#d0b808'}}>
-      <Typography style={{color:'#2F4F4F' ,top:'50%',left:'50%',marginRight:'-50%',transform:'translate(-50%,-50%)',position:'absolute',fontWeight:'Bold'}} variant="h1">COURSES</Typography>
-    </Paper>
-    <div className="container">
-      <div className="row" style={{ marginTop: '25px', padding: 'auto' }}>
-        {data.map(data => {
-          return (
-            <div className="col-4" style={{ paddingTop: '20px' }}>
-              <Card className={classes.card}>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    alt="Contemplative Reptile"
-                    height="140"
-                    image="https://ak0.picdn.net/shutterstock/videos/8911510/thumb/1.jpg"
-                    title="Contemplative Reptile"
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {data.title}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="p">
-                      {data.content}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </div>
-          );
-        })}
+    <div
+      style={{
+        backgroundColor: '#eaded3'
+      }}>
+      <Paper
+        style={{ height: '10vh', position: 'relative', background: '#d0b808' }}>
+        <Typography
+          style={{
+            color: '#2F4F4F',
+            top: '50%',
+            left: '50%',
+            marginRight: '-50%',
+            transform: 'translate(-50%,-50%)',
+            position: 'absolute',
+            fontWeight: 'Bold'
+          }}
+          variant="h1">
+          COURSES
+        </Typography>
+      </Paper>
+      <div className="container">
+        <div className="row" style={{ padding: '50px 0px' }}>
+          {data.map(data => {
+            return (
+              <div className="col-4" style={{ paddingTop: '20px' }}>
+                <Card className={classes.card}>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      alt="Contemplative Reptile"
+                      height="140"
+                      image="https://ak0.picdn.net/shutterstock/videos/8911510/thumb/1.jpg"
+                      title="Contemplative Reptile"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {data.title}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        color="textSecondary"
+                        component="p">
+                        {data.content}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              </div>
+            );
+          })}
+        </div>
       </div>
-    </div>
     </div>
   );
 }

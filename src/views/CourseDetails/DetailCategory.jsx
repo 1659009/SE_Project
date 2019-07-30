@@ -12,15 +12,18 @@ import './style.css';
 
 export default class DetailCategory extends Component {
   render() {
+    const { duration, number_of_course, lecturer, rating } = this.props.info;
     return (
       <div>
-        <Container>
+        <Container
+          style={{
+            paddingBottom: '0px'
+          }}>
           <Paper
             style={{
               height: '6vh',
               position: 'relative',
               background: '#d0b808',
-              marginTop: '4px'
             }}>
             <Typography
               style={{
@@ -33,12 +36,14 @@ export default class DetailCategory extends Component {
                 fontWeight: 'Bold'
               }}
               variant="h1">
-              COURSES
+              DETAILS
             </Typography>
           </Paper>
           <Paper className="courseCategory">
             <Table>
-              <TableBody className="categoryBody">
+              <TableBody
+                className="categoryBody"
+                style={{ backgroundColor: '#eaded3' }}>
                 <TableRow>
                   <TableCell
                     className="categoryHeader"
@@ -47,7 +52,7 @@ export default class DetailCategory extends Component {
                     Duration
                   </TableCell>
                   <TableCell className="categoryInformation">
-                    30 hours
+                    {duration}
                   </TableCell>
                 </TableRow>
                 <TableRow>
@@ -57,7 +62,9 @@ export default class DetailCategory extends Component {
                     scope="row">
                     # of lesson
                   </TableCell>
-                  <TableCell className="categoryInformation">15</TableCell>
+                  <TableCell className="categoryInformation">
+                    {number_of_course}
+                  </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell
@@ -66,7 +73,9 @@ export default class DetailCategory extends Component {
                     scope="row">
                     Teacher
                   </TableCell>
-                  <TableCell className="categoryInformation">Hai To</TableCell>
+                  <TableCell className="categoryInformation">
+                    {lecturer}
+                  </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell
@@ -84,7 +93,9 @@ export default class DetailCategory extends Component {
                     scope="row">
                     Rating
                   </TableCell>
-                  <TableCell className="categoryInformation">4.5/5</TableCell>
+                  <TableCell className="categoryInformation">
+                    {rating}
+                  </TableCell>
                 </TableRow>
               </TableBody>
             </Table>

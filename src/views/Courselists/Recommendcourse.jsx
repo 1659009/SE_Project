@@ -30,13 +30,15 @@ export default function RecommendCourse(props) {
   const { recommendCourse } = props;
   console.log(props);
   return (
-    <div>
+    <div
+      style={{
+        backgroundColor: '#eaded3'
+      }}>
       <Paper
         style={{
           height: '6vh',
           position: 'relative',
-          background: '#d0b808',
-          marginTop: '50px'
+          background: '#d0b808'
         }}>
         <Typography
           style={{
@@ -52,7 +54,9 @@ export default function RecommendCourse(props) {
           RECOMMENDED COURSE
         </Typography>
       </Paper>
-      <Container className={classes.courseList}>
+      <Container
+        className={classes.courseList}
+        style={{ marginTop: '-23px', paddingLeft: '77px' }}>
         <div className="row" style={{ marginTop: '25px', padding: 'auto' }}>
           {recommendCourse.map(recommendCourse => {
             return (

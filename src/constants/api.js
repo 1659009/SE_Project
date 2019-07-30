@@ -1,1 +1,3 @@
-export const api = 'localhost:8080';
+export const Api = {
+  link: 'http://localhost:8080/'
+};

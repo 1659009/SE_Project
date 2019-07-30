@@ -3,15 +3,10 @@ import React, { Component } from 'react';
 import ImgMediaCard from './components/Homepagecontent';
 import Homepagemainpic from './components/Homepagemainpic';
 import Homepageaboutus from './components/Homepageaboutus';
-import Footer from '../../layouts/Homepage/components/Footer/Footer';
-
-import Homepage from '../../layouts/Homepage/Homepage';
-
-
-
+import Footer from 'layouts/Homepage/components/Footer/Footer';
+import Homepage from 'layouts/Homepage/Homepage';
 
 export default function Homepageview() {
-
   const data = [
     {
       title: '123',
@@ -43,7 +38,7 @@ export default function Homepageview() {
       <Homepage />
       <Homepagemainpic />
       <ImgMediaCard data={data} />
-      <Homepageaboutus/>
+      <Homepageaboutus />
       <Footer />
     </div>
   );
