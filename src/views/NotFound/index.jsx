@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import compose from 'recompose/compose';
 
 // Externals
 import PropTypes from 'prop-types';
@@ -27,28 +29,25 @@ const styles = theme => ({
 });
 
 class NotFound extends Component {
+  componentDidMount() {
+    setTimeout(() => {
+      this.props.history.push('/homepage');
+    }, 3000);
+  }
+
   render() {
     const { classes } = this.props;
 
     return (
       <div className={classes.root}>
-        <Grid
-          container
-          justify="center"
-          spacing={4}
-        >
-          <Grid
-            item
-            lg={6}
-            xs={12}
-          >
+        <Grid container justify="center" spacing={4}>
+          <Grid item lg={6} xs={12}>
             <div className={classes.content}>
               <Typography variant="h1">
                 404: The page you are looking for isn’t here
               </Typography>
               <Typography variant="subtitle2">
-                You either tried some shady route or you came here by mistake.
-                Whichever it is, try using the navigation
+                Return to Home in 3 seconds...
               </Typography>
               <img
                 alt="Under development"
@@ -67,4 +66,7 @@ NotFound.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(NotFound);
+export default compose(
+  withRouter,
+  withStyles(styles)
+)(NotFound);

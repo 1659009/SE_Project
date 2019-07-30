@@ -34,7 +34,7 @@ export default class Profile extends React.Component {
 
   handLogout = () => {
     localStorage.clear();
-    window.location.reload();
+    window.location.replace('/homepage');
   };
 
   handleClose = () => {
