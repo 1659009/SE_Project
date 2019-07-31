@@ -185,7 +185,7 @@ export default function Topbar(props) {
               <Link to="/homepage" className={classes.link}>
                 <MenuItem className={classes.menuItems}>Home</MenuItem>
               </Link>
-              <Link to="/homepage" className={classes.link}>
+              <Link to="/aboutus" className={classes.link}>
                 <MenuItem className={classes.menuItems}>About us</MenuItem>
               </Link>
               <Link to="/homepage" className={classes.link}>
