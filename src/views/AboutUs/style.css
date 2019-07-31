@@ -14,6 +14,14 @@
   margin-top: -24px;
 }
 
+.dividerContactUs {
+  height: 6vh;
+  background: #d0b808;
+  color: black;
+  font-size: 40px;
+  font-weight: bold;
+}
+
 .MemberSection {
   position: relative;
   height: 30vh;

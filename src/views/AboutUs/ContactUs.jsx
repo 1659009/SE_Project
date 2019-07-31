@@ -7,8 +7,11 @@ class ContactUs extends Component {
   render() {
     return (
       <div>
-        <Box className="divider" display="flex" justifyContent="center">
-          Our Team
+        <Box
+          className="dividerContactUs"
+          display="flex"
+          justifyContent="center">
+          Contact Us
         </Box>
         <div className="contactUsSection">
           <div className="inputSection">
