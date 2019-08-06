@@ -14,7 +14,7 @@ import Homepage from 'layouts/Homepage/Homepage';
 import { Dashboard as DashboardLayout } from 'layouts';
 
 // Custom components
-import { AccountProfile, AccountDetails } from './components';
+import { AccountProfile, AccountDetails, SlidingTabsDemo } from './components';
 
 // Component styles
 const styles = theme => ({
@@ -32,7 +32,10 @@ class Account extends Component {
     return (
       <div>
         <Homepage />
-        <Grid
+
+
+        <SlidingTabsDemo />
+        {/* <Grid
           container
           spacing={4}
           style={{ height: '70vh', padding: '50px 100px' }}>
@@ -42,7 +45,7 @@ class Account extends Component {
           <Grid item lg={8} md={6} xl={8} xs={12}>
             <AccountDetails />
           </Grid>
-        </Grid>
+        </Grid> */}
         <Footer />
       </div>
     );
