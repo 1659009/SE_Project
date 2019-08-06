@@ -14,6 +14,7 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import axios from 'axios';
 import { notification } from 'antd';
 import { Api } from 'constants/api';
+import { borderRadius } from '@material-ui/system';
 let isLoggin;
 class Detailheader extends Component {
   constructor(props) {
@@ -41,7 +42,7 @@ class Detailheader extends Component {
           });
         }
       })
-      .catch(function(error) {
+      .catch(function (error) {
         notification['error']({
           message: 'You have already enrolled this course.'
         });
@@ -71,7 +72,7 @@ class Detailheader extends Component {
           });
         }
       })
-      .catch(function(error) {
+      .catch(function (error) {
         notification['error']({
           message: 'You have already savedmaxWidth this course.'
         });
@@ -97,7 +98,7 @@ class Detailheader extends Component {
             height: '10vh',
             position: 'relative',
             background: '#d0b808',
-            margin: '2px auto 0px auto'
+            margin: '2px auto 0px auto',
           }}>
           <Typography
             style={{

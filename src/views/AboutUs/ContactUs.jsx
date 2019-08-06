@@ -18,11 +18,11 @@ class ContactUs extends Component {
             <h2 className="contactUsHeader text-center">
               Feel Free To Contact Us
             </h2>
-            <TextArea className="inputField" />
+            <TextArea className="inputField" placeholder="Name"/>
             <br />
-            <TextArea className="inputField" />
+            <TextArea className="inputField" placeholder="Email"/>
             <br />
-            <TextArea className="inputBigField" />
+            <TextArea className="inputBigField" placeholder="Content"/>
             <br />
             <Button className="submitButton">Submit</Button>
           </div>

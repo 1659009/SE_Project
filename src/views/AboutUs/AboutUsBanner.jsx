@@ -6,7 +6,7 @@ class AboutUsBanner extends Component {
   render() {
     return (
       <div>
-        <Paper className="banner">
+        <Paper className="banner" style={{ borderRadius: '0px' }}>
           <Paper
             id="bottomPaper"
             style={{
@@ -14,7 +14,8 @@ class AboutUsBanner extends Component {
               width: '40%',
               height: '50%',
               paddingLeft: '20px',
-              paddingRight: '20px'
+              paddingRight: '20px',
+
             }}>
             <div style={{ position: 'absolute' }}>
               <h2 style={{ color: 'whitesmoke', paddingTop: '30px' }}>

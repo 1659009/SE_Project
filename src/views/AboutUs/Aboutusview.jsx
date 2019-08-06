@@ -10,7 +10,7 @@ class Aboutusview extends Component {
     return (
       <div>
         <Header />
-        <Banner />>
+        <Banner />
         <MemberList />
         <ContactUs />
         <Footer />

@@ -46,7 +46,7 @@ export default function ImgMediaCard(props) {
         </Typography>
       </Paper>
       <div className="container">
-        <div className="row" style={{ padding: '50px 0px' }}>
+        <div className="row" style={{ padding: '30px 0px' }}>
           {data.map(data => {
             return (
               <div className="col-4" style={{ paddingTop: '20px' }}>
