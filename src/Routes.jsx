@@ -22,6 +22,7 @@ import Healthview from 'views/Courselists/Health/Healthview';
 import Languageview from 'views/Courselists/Language/Languageview';
 import Malview from 'views/Courselists/MathAndLogic/Malview';
 import Coursedetailsview from 'views/CourseDetails/Coursedetailsview';
+import Aboutusview from 'views/AboutUs/Aboutusview';
 
 export default class Routes extends Component {
   render() {
@@ -41,6 +42,7 @@ export default class Routes extends Component {
         <Route component={Languageview} exact path="/course/3000000006" />
         <Route component={Malview} exact path="/course/3000000007" />
         <Route component={Coursedetailsview} exact path="/course-detail" />
+        <Route component={Aboutusview} exact path="/aboutus" />
         <Route component={Dashboard} exact path="/dashboard" />
         <Route component={UserList} exact path="/users" />
         <Route component={ProductList} exact path="/products" />

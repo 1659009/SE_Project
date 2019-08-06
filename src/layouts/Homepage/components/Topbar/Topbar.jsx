@@ -85,10 +85,10 @@ const useStyles = makeStyles(theme => ({
   },
   logo: {
     display: 'inline',
-    width: '3%'
+    width: '130%'
   },
   categorize: {
-    marginLeft: theme.spacing(3),
+    marginLeft: theme.spacing(5),
     width: '150px',
     '&:hover': {
       background: '#d0b808',
@@ -104,6 +104,9 @@ const useStyles = makeStyles(theme => ({
       color: 'white',
       textDecoration: 'none'
     }
+  },
+  logoLink: {
+    width: '50px'
   }
 }));
 
@@ -131,11 +134,13 @@ export default function Topbar(props) {
     <div className={classes.grow}>
       <AppBar position="static" style={{ background: '#2F4F4F' }}>
         <Toolbar>
-          <img
-            className={classes.logo}
-            src="https://scontent.fsgn5-6.fna.fbcdn.net/v/t1.15752-9/66393848_2411908192387248_6191358428502294528_n.png?_nc_cat=107&_nc_oc=AQlDymdus3YggYTzjLhMW8WFF_SGNMZc6gyt7Tc-X96kVNycysQwZdGo-AHixjHJwDk&_nc_ht=scontent.fsgn5-6.fna&oh=441fd0375e071b6daa33cc1b7b72ff3f&oe=5DBE3C26"
-            alt="Logo"
-          />
+          <Link to="/homepage" className={classes.logoLink}>
+            <img
+              className={classes.logo}
+              src="https://scontent.fsgn5-6.fna.fbcdn.net/v/t1.15752-9/66393848_2411908192387248_6191358428502294528_n.png?_nc_cat=107&_nc_oc=AQlDymdus3YggYTzjLhMW8WFF_SGNMZc6gyt7Tc-X96kVNycysQwZdGo-AHixjHJwDk&_nc_ht=scontent.fsgn5-6.fna&oh=441fd0375e071b6daa33cc1b7b72ff3f&oe=5DBE3C26"
+              alt="Logo"
+            />
+          </Link>
 
           <Button
             className={classes.categorize}
@@ -185,7 +190,7 @@ export default function Topbar(props) {
               <Link to="/homepage" className={classes.link}>
                 <MenuItem className={classes.menuItems}>Home</MenuItem>
               </Link>
-              <Link to="/homepage" className={classes.link}>
+              <Link to="/aboutus" className={classes.link}>
                 <MenuItem className={classes.menuItems}>About us</MenuItem>
               </Link>
               <Link to="/homepage" className={classes.link}>
@@ -196,8 +201,8 @@ export default function Topbar(props) {
                   <MenuItem className={classes.menuItems}>Login</MenuItem>
                 </Link>
               ) : (
-                <div style={{ display: 'none' }} />
-              )}
+                  <div style={{ display: 'none' }} />
+                )}
             </MenuList>
             {isLogin ? <Profile /> : <div style={{ display: 'none' }} />}
           </div>

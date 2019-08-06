@@ -1,0 +1,132 @@
+.banner {
+  height: 500px;
+  background: url('https://i.pinimg.com/originals/11/1a/03/111a03133d14214539c96e0f657dff1a.png')
+    no-repeat;
+  position: relative;
+}
+
+.divider {
+  height: 6vh;
+  background: #d0b808;
+  color: black;
+  font-size: 40px;
+  font-weight: bold;
+  
+}
+
+.dividerContactUs {
+  height: 6vh;
+  background: #d0b808;
+  color: black;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.MemberSection {
+  position: relative;
+  height: 30vh;
+  padding-top: 22px;
+  background: #eaded3;
+}
+
+.avatarSection {
+  position: absolute;
+  text-align: center;
+  width: 400px;
+  left: 290px;
+}
+
+.memberAvatar {
+  padding-left: 20px;
+}
+
+.informationSection {
+  position: absolute;
+  width: 900px;
+  height: 250px;
+  right: 300px;
+}
+
+.memberName {
+  font-size: 50px;
+}
+
+.memberInformation {
+  width: 900px;
+  height: 250px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.MemberSection2 {
+  position: relative;
+  height: 30vh;
+  padding-top: 15px;
+}
+
+.avatarSection2 {
+  position: absolute;
+  text-align: center;
+  width: 400px;
+  right: 250px;
+}
+
+.memberAvatar2 {
+  padding-left: 20px;
+}
+
+.informationSection2 {
+  position: absolute;
+  width: 900px;
+  height: 250px;
+  left: 360px;
+}
+
+.contactUsSection {
+  position: relative;
+  height: 400px;
+  background: #eaded3;
+}
+
+.inputSection {
+  position: absolute;
+  top: 30px;
+  left: 200px;
+  height: 330px;
+  width: 900px;
+  text-align: center;
+}
+
+.pictureSection {
+  position: absolute;
+  top: 30px;
+  right: 330px;
+}
+
+.contactUsHeader {
+  font-size: 40px;
+}
+
+.inputField {
+  width: 500px;
+  margin-top: 10px;
+  height: 30px !important;
+  border: 1px solid black !important;
+}
+
+.inputBigField {
+  margin-top: 10px;
+  width: 500px;
+  height: 80px !important;
+  border: 1px solid black !important;
+}
+
+.submitButton {
+  margin-top: 20px !important;
+  height: 45px !important;
+  width: 150px !important;
+  background: #d0b808 !important;
+  color: white !important;
+  left: 175px;
+  border-radius: 25%;
+}
