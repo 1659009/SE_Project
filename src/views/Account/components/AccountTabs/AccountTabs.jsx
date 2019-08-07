@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
 import './style.css';
 import { Tabs, Radio } from 'antd';
-import { AccountDetails, AccountProfile } from 'views/Account/components';
+import { AccountDetails, AccountProfile, AccountTable } from 'views/Account/components';
 import { Grid } from '@material-ui/core';
 
 const { TabPane } = Tabs;
@@ -41,10 +41,19 @@ export default class SlidingTabsDemo extends React.Component {
                         </Grid>
                     </TabPane>
                     <TabPane tab="Enrolled" key={2}>
-                        Content of tab 2
+                        <Grid
+                            container
+                            direction="row"
+                            justify="center"
+                            alignItems="center"
+                            style={{ height: '50vh' }}>
+                            <Grid item lg={4} md={6} xl={10} xs={12}>
+                                <AccountTable />
+                            </Grid>
+                        </Grid>
                     </TabPane>
                     <TabPane tab="Saved" key={3}>
-                        Content of tab 3
+                        <AccountTable />
                     </TabPane>
                 </Tabs>
             </div>
