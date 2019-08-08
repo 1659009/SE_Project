@@ -7,7 +7,7 @@ class Faqcontent extends Component {
     render() {
         return (
             <div>
-                <Container style={{ height: "64vh" }} >
+                <Container style={{ height: "80vh" }} >
                     <Paper
                         style={{
                             height: '6vh',
