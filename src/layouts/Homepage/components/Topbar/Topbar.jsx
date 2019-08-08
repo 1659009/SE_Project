@@ -193,7 +193,7 @@ export default function Topbar(props) {
               <Link to="/aboutus" className={classes.link}>
                 <MenuItem className={classes.menuItems}>About us</MenuItem>
               </Link>
-              <Link to="/homepage" className={classes.link}>
+              <Link to="/faq" className={classes.link}>
                 <MenuItem className={classes.menuItems}>FAQ</MenuItem>
               </Link>
               {!isLogin ? (

@@ -23,6 +23,7 @@ import Languageview from 'views/Courselists/Language/Languageview';
 import Malview from 'views/Courselists/MathAndLogic/Malview';
 import Coursedetailsview from 'views/CourseDetails/Coursedetailsview';
 import Aboutusview from 'views/AboutUs/Aboutusview';
+import Faqview from 'views/FAQ/Faqview';
 
 export default class Routes extends Component {
   render() {
@@ -55,6 +56,7 @@ export default class Routes extends Component {
         <Route component={UnderDevelopment} exact path="/under-development" />
         <Route component={NotFound} exact path="/not-found" />
         <Route component={Account} exact path="/account-profile" />
+        <Route component={Faqview} exact path="/faq" />
         <Redirect to="/not-found" />
       </Switch>
     );

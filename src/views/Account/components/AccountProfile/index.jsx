@@ -49,13 +49,6 @@ class AccountProfile extends Component {
               src="/images/avatars/avatar_1.png"
             />
           </div>
-          <div className={classes.progressWrapper}>
-            <Typography variant="body1">Profile Completeness: 70%</Typography>
-            <LinearProgress
-              value={70}
-              variant="determinate"
-            />
-          </div>
         </PortletContent>
         <PortletFooter>
           <Button
