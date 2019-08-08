@@ -34,11 +34,11 @@ class CSCourses extends React.Component {
           this.setState({
             list: response.data.course_list,
             topic: response.data.course_topic,
-            isLoading: false
+            isLoading: false,
           });
         }
       })
-      .catch(function(error) {});
+      .catch(function (error) { });
   }
 
   forceUpdateHandler = () => {
@@ -94,36 +94,36 @@ class CSCourses extends React.Component {
         {isLoading ? (
           <div style={{ textAlign: 'center' }}>Loading...</div>
         ) : (
-          <div>
-            <Paper
-              style={{
-                height: '6vh',
-                position: 'relative',
-                background: '#d0b808'
-              }}>
-              <Typography
+            <div>
+              <Paper
                 style={{
-                  color: '#2F4F4F',
-                  top: '50%',
-                  left: '50%',
-                  marginRight: '-50%',
-                  transform: 'translate(-50%,-50%)',
-                  position: 'absolute',
-                  fontWeight: 'Bold'
-                }}
-                variant="h1">
-                {topic}
-              </Typography>
-            </Paper>
-            <Container>
-              <div className="row" style={{ padding: 'auto' }}>
-                {list.map(item => {
-                  return this.renderItem(item);
-                })}
-              </div>
-            </Container>
-          </div>
-        )}
+                  height: '6vh',
+                  position: 'relative',
+                  background: '#d0b808'
+                }}>
+                <Typography
+                  style={{
+                    color: '#2F4F4F',
+                    top: '50%',
+                    left: '50%',
+                    marginRight: '-50%',
+                    transform: 'translate(-50%,-50%)',
+                    position: 'absolute',
+                    fontWeight: 'Bold'
+                  }}
+                  variant="h1">
+                  {topic}
+                </Typography>
+              </Paper>
+              <Container>
+                <div className="row" style={{ padding: 'auto' }}>
+                  {list.map(item => {
+                    return this.renderItem(item);
+                  })}
+                </div>
+              </Container>
+            </div>
+          )}
       </div>
     );
   }
