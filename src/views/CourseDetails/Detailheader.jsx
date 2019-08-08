@@ -20,10 +20,7 @@ class Detailheader extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      course_id: 0,
-      user_id: localStorage.getItem('user_id'),
-      isLogin: localStorage.getItem('isLogin'),
-      isEnrolled: false
+
     };
   }
 
@@ -40,9 +37,10 @@ class Detailheader extends Component {
           notification['success']({
             message: 'Enroll success.'
           });
+          this.forceUpdate()
         }
       })
-      .catch(function(error) {
+      .catch(function (error) {
         notification['error']({
           message: 'You have already enrolled this course.'
         });
@@ -72,11 +70,11 @@ class Detailheader extends Component {
           });
         }
       })
-      .catch(function(error) {
+      .catch(function (error) {
         notification['error']({
           message: 'You have already savedmaxWidth this course.'
         });
-      });
+      }); W
   };
 
   handleSaveFail = () => {
@@ -87,9 +85,11 @@ class Detailheader extends Component {
     });
   };
 
+
   render() {
     const { id, name, description, image } = this.props.info;
-    console.log(this.state);
+    const { enrolled } = this.props;
+    console.log(this.props);
 
     return (
       <div>
@@ -142,7 +142,7 @@ class Detailheader extends Component {
                 <div className="courseEnroll">
                   <Grid container spacing={3}>
                     <Grid item xs={3}>
-                      <Button
+                      {!enrolled ? (<Button
                         size="large"
                         className="enrollButton"
                         onClick={() => {
@@ -152,7 +152,19 @@ class Detailheader extends Component {
                         }}
                         style={{ backgroundColor: '#D0B808', color: 'white' }}>
                         Enroll Now
-                      </Button>
+
+                      </Button>) : (<Button
+                          size="large"
+                          className="enrollButton"
+                          onClick={(id) => {
+                            this.handRedirectToPage(id)
+                          }}
+                          style={{ backgroundColor: '#D0B808', color: 'white' }}>
+                          Start
+
+
+                      </Button>)}
+
                     </Grid>
                     <Grid item xs={3}>
                       <Button

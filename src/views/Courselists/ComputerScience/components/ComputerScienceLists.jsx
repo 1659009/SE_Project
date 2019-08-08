@@ -16,7 +16,7 @@ class CSCourses extends React.Component {
     this.state = {
       list: [],
       topic: '',
-      isLoading: true
+      isLoading: false
     };
   }
   componentWillMount() {

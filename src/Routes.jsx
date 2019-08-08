@@ -28,6 +28,7 @@ import Courselearningview from 'views/Courselearning/Courselearningview';
 
 
 export default class Routes extends Component {
+  WW
   render() {
     return (
       <Switch>
@@ -59,7 +60,7 @@ export default class Routes extends Component {
         <Route component={NotFound} exact path="/not-found" />
         <Route component={Account} exact path="/account-profile" />
         <Route component={Faqview} exact path="/faq" />
-        <Route component={Courselearningview} exact path="/course" />
+        <Route component={Courselearningview} exact path="/course-lesson" />
         <Redirect to="/not-found" />
       </Switch>
     );
