@@ -1,5 +1,5 @@
 export const Api = {
-  link: 'http://192.168.1.20:8080/'
+  link: 'http://localhost:8080/'
 };
 
 

@@ -13,7 +13,7 @@ import { chartjs } from './helpers';
 
 // Theme
 import theme from './theme';
-
+import 'style/GlobalCss.css';
 // Styles
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import './assets/scss/index.scss';

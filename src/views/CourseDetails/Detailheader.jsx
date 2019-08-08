@@ -42,7 +42,7 @@ class Detailheader extends Component {
           });
         }
       })
-      .catch(function (error) {
+      .catch(function(error) {
         notification['error']({
           message: 'You have already enrolled this course.'
         });
@@ -72,7 +72,7 @@ class Detailheader extends Component {
           });
         }
       })
-      .catch(function (error) {
+      .catch(function(error) {
         notification['error']({
           message: 'You have already savedmaxWidth this course.'
         });
@@ -98,7 +98,7 @@ class Detailheader extends Component {
             height: '10vh',
             position: 'relative',
             background: '#d0b808',
-            margin: '2px auto 0px auto',
+            margin: '2px auto 0px auto'
           }}>
           <Typography
             style={{
@@ -132,7 +132,11 @@ class Detailheader extends Component {
               </Grid>
               <Grid item className="listItemRight" xs={6}>
                 <div className="courseInformation">
-                  <h2 className="courseTitle">{name}</h2>
+                  <h2
+                    className="courseTitle"
+                    style={{ wordBreak: 'break-word' }}>
+                    {name}
+                  </h2>
                   <p className="courseDescription">{description}</p>
                 </div>
                 <div className="courseEnroll">

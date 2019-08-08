@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import axios from 'axios';
+import { notification } from 'antd';
 
 // Externals
 import PropTypes from 'prop-types';
@@ -87,7 +88,6 @@ class SignIn extends Component {
         password: password
       })
       .then(response => {
-        console.log(response);
         if (response.status == 200) {
           console.log(response);
 
@@ -99,8 +99,10 @@ class SignIn extends Component {
           history.push('/homepage');
         }
       })
-      .catch(function(error) {
-        console.log(error);
+      .catch(error => {
+        notification['error']({
+          message: 'Invalid email or password'
+        });
       });
     // axios({
     //   method: 'post',
