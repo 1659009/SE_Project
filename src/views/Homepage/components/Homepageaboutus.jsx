@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
 import './Homepage.css';
 import { Card, Button } from '@material-ui/core';
@@ -64,7 +64,11 @@ export default class Homepageaboutus extends Component {
                   float: 'right',
                   marginRight: '10%'
                 }}>
-                Click here
+                <Link
+                  style={{ color: 'white', textDecoration: 'none' }}
+                  to="/about-us">
+                  Click here
+                </Link>
               </Button>
             </div>
           </Paper>

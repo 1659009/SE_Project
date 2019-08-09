@@ -190,7 +190,7 @@ export default function Topbar(props) {
               <Link to="/homepage" className={classes.link}>
                 <MenuItem className={classes.menuItems}>Home</MenuItem>
               </Link>
-              <Link to="/aboutus" className={classes.link}>
+              <Link to="/about-us" className={classes.link}>
                 <MenuItem className={classes.menuItems}>About us</MenuItem>
               </Link>
               <Link to="/faq" className={classes.link}>
@@ -201,8 +201,8 @@ export default function Topbar(props) {
                   <MenuItem className={classes.menuItems}>Login</MenuItem>
                 </Link>
               ) : (
-                  <div style={{ display: 'none' }} />
-                )}
+                <div style={{ display: 'none' }} />
+              )}
             </MenuList>
             {isLogin ? <Profile /> : <div style={{ display: 'none' }} />}
           </div>

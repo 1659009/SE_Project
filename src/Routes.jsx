@@ -26,9 +26,8 @@ import Aboutusview from 'views/AboutUs/Aboutusview';
 import Faqview from 'views/FAQ/Faqview';
 import Courselearningview from 'views/Courselearning/Courselearningview';
 
-
 export default class Routes extends Component {
-  WW
+  WW;
   render() {
     return (
       <Switch>
@@ -46,7 +45,7 @@ export default class Routes extends Component {
         <Route component={Languageview} exact path="/course/3000000006" />
         <Route component={Malview} exact path="/course/3000000007" />
         <Route component={Coursedetailsview} exact path="/course-detail" />
-        <Route component={Aboutusview} exact path="/aboutus" />
+        <Route component={Aboutusview} exact path="/about-us" />
         <Route component={Dashboard} exact path="/dashboard" />
         <Route component={UserList} exact path="/users" />
         <Route component={ProductList} exact path="/products" />
