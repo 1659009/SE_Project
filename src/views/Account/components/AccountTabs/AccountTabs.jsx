@@ -2,11 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
 import './style.css';
-import { Tabs, Radio } from 'antd';
+import { Tabs, Radio, Icon, notification } from 'antd';
+import { Link } from 'react-router-dom';
+
 import {
   AccountDetails,
   AccountProfile,
-  AccountTable
+  AccountTableEnroll,
+  AccountTableSave
 } from 'views/Account/components';
 import { Grid } from '@material-ui/core';
 import { Api } from 'constants/api';
@@ -74,6 +77,96 @@ export default class SlidingTabsDemo extends React.Component {
       .catch(function(error) {});
   };
 
+  renderEnroll = (item, index) => {
+    const { id, name, image } = item;
+    return (
+      <tr>
+        <td>{index + 1}</td>
+        <td>
+          <Link to={`/course-lesson?id=${id}`} style={{ color: '#2F4F4F' }}>
+            {name}
+          </Link>
+        </td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-danger"
+            onClick={() => this.handleCancelEnroll(id)}>
+            <Icon type="close" style={{ fontSize: '25px' }} />
+          </button>
+        </td>
+      </tr>
+    );
+  };
+
+  handleCancelEnroll = course_id => {
+    let link = Api.link + 'cancel-enroll';
+    let user_id = localStorage.getItem('user_id');
+    axios
+      .delete(link, {
+        data: {
+          user_id: parseInt(user_id),
+          course_id: course_id
+        }
+      })
+      .then(response => {
+        notification['success']({
+          message: 'Cancel enroll success.'
+        });
+        this.getEnrolledCourse();
+      })
+      .catch(function(error) {
+        notification['error']({
+          message: 'Cancel fail. Please try again.'
+        });
+      });
+  };
+
+  renderSave = (item, index) => {
+    const { id, name, image } = item;
+    return (
+      <tr>
+        <td>{index + 1}</td>
+        <td>
+          <Link to={`/course-lesson?id=${id}`} style={{ color: '#2F4F4F' }}>
+            {name}
+          </Link>
+        </td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-danger"
+            onClick={() => this.handleCancelSave(id)}>
+            <Icon type="close" style={{ fontSize: '25px' }} />
+          </button>
+        </td>
+      </tr>
+    );
+  };
+
+  handleCancelSave = course_id => {
+    let link = Api.link + 'delete-save';
+    let user_id = localStorage.getItem('user_id');
+    axios
+      .delete(link, {
+        data: {
+          user_id: parseInt(user_id),
+          course_id: course_id
+        }
+      })
+      .then(response => {
+        notification['success']({
+          message: 'Delete saved course success.'
+        });
+        this.getSavedCourse();
+      })
+      .catch(function(error) {
+        notification['error']({
+          message: 'Delete fail. Please try again.'
+        });
+      });
+  };
+
   render() {
     const { mode, enrolledCourse, savedCourse } = this.state;
     console.log(this.state);
@@ -99,10 +192,52 @@ export default class SlidingTabsDemo extends React.Component {
             </Grid>
           </TabPane>
           <TabPane tab="Enrolled" key={2}>
-            <AccountTable course={this.state.enrolledCourse} />
+            <table className="table" style={{ fontSize: '20px' }}>
+              <thead>
+                <tr>
+                  <th scope="col" style={{ width: '103px' }}>
+                    #
+                  </th>
+                  <th scope="col" style={{ width: '659px' }}>
+                    Name
+                  </th>
+                  <th scope="col" />
+                </tr>
+              </thead>
+              <tbody>
+                {this.state.enrolledCourse ? (
+                  this.state.enrolledCourse.map((item, index) => {
+                    return this.renderEnroll(item, index);
+                  })
+                ) : (
+                  <tr>No course</tr>
+                )}
+              </tbody>
+            </table>
           </TabPane>
           <TabPane tab="Saved" key={3}>
-            <AccountTable course={this.state.savedCourse} />
+            <table className="table" style={{ fontSize: '20px' }}>
+              <thead>
+                <tr>
+                  <th scope="col" style={{ width: '103px' }}>
+                    #
+                  </th>
+                  <th scope="col" style={{ width: '659px' }}>
+                    Name
+                  </th>
+                  <th scope="col" />
+                </tr>
+              </thead>
+              <tbody>
+                {this.state.savedCourse ? (
+                  this.state.savedCourse.map((item, index) => {
+                    return this.renderSave(item, index);
+                  })
+                ) : (
+                  <tr>No course</tr>
+                )}
+              </tbody>
+            </table>
           </TabPane>
         </Tabs>
       </div>

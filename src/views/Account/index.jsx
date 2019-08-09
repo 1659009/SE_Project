@@ -30,9 +30,8 @@ class Account extends Component {
     const { classes } = this.props;
 
     return (
-      <div>
+      <div style={{ backgroundColor: '#eaded3' }}>
         <Homepage />
-
 
         <SlidingTabsDemo />
         {/* <Grid

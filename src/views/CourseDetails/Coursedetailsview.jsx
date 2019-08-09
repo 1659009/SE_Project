@@ -6,6 +6,7 @@ import DetailCategory from './DetailCategory';
 import Recommendview from './Recommedview';
 import './style.css';
 import { Api } from 'constants/api';
+import { Link } from 'react-router-dom';
 import {
   Paper,
   Grid,
@@ -24,14 +25,12 @@ export default class Coursedetailsview extends Component {
       isEnrolled: false,
       course_id: 0,
       user_id: localStorage.getItem('user_id'),
-      isLogin: localStorage.getItem('isLogin'),
+      isLogin: localStorage.getItem('isLogin')
     };
   }
   componentWillMount() {
     course_id = window.location.search.split('=')[1];
-    user_id = localStorage.getItem(
-      'user_id'
-    )
+    user_id = localStorage.getItem('user_id');
   }
 
   handleEnroll = course_id => {
@@ -47,11 +46,10 @@ export default class Coursedetailsview extends Component {
           notification['success']({
             message: 'Enroll success.'
           });
-          this.getCourseById()
-
+          this.getCourseById();
         }
       })
-      .catch(function (error) {
+      .catch(function(error) {
         notification['error']({
           message: 'You have already enrolled this course.'
         });
@@ -81,7 +79,7 @@ export default class Coursedetailsview extends Component {
           });
         }
       })
-      .catch(function (error) {
+      .catch(function(error) {
         notification['error']({
           message: 'You have already savedmaxWidth this course.'
         });
@@ -97,12 +95,12 @@ export default class Coursedetailsview extends Component {
   };
 
   handRedirectToPage = () => {
-
     window.location.replace('/course-lesson?id=' + course_id);
   };
 
   getCourseById = () => {
-    let link = Api.link + 'course-detail?course_id=' + course_id + '&user_id=' + user_id;
+    let link =
+      Api.link + 'course-detail?course_id=' + course_id + '&user_id=' + user_id;
     axios
       .get(link)
       .then(response => {
@@ -114,20 +112,20 @@ export default class Coursedetailsview extends Component {
           });
         }
       })
-      .catch(function (error) { });
-  }
+      .catch(function(error) {});
+  };
 
   componentDidMount() {
-    this.getCourseById()
+    this.getCourseById();
   }
 
   render() {
-    const { name, image, description } = this.state.info
-    const { isEnrolled } = this.state
+    const { name, image, description } = this.state.info;
+    const { isEnrolled } = this.state;
     return (
       <div id="detail-course">
         <Topbar />
-        < div>
+        <div>
           <Paper
             style={{
               height: '10vh',
@@ -177,29 +175,39 @@ export default class Coursedetailsview extends Component {
                   <div className="courseEnroll">
                     <Grid container spacing={3}>
                       <Grid item xs={3}>
-                        {!isEnrolled ? (<Button
-                          size="large"
-                          className="enrollButton"
-                          onClick={() => {
-                            this.state.isLogin
-                              ? this.handleEnroll(course_id)
-                              : this.handleEnrollFail();
-                          }}
-                          style={{ backgroundColor: '#D0B808', color: 'white' }}>
-                          Enroll Now
-
-                      </Button>) : (<Button
+                        {!isEnrolled ? (
+                          <Button
                             size="large"
                             className="enrollButton"
-                            onClick={(course_id) => {
-                              this.handRedirectToPage()
+                            onClick={() => {
+                              this.state.isLogin
+                                ? this.handleEnroll(course_id)
+                                : this.handleEnrollFail();
                             }}
-                            style={{ backgroundColor: '#D0B808', color: 'white' }}>
-                            Start
-
-
-                      </Button>)}
-
+                            style={{
+                              backgroundColor: '#D0B808',
+                              color: 'white'
+                            }}>
+                            Enroll Now
+                          </Button>
+                        ) : (
+                          <Button
+                            size="large"
+                            className="enrollButton"
+                            style={{
+                              backgroundColor: '#D0B808',
+                              color: 'white'
+                            }}>
+                            <Link
+                              to={`/course-lesson?id=${course_id}`}
+                              style={{
+                                textDecoration: 'none',
+                                color: 'white'
+                              }}>
+                              Start
+                            </Link>
+                          </Button>
+                        )}
                       </Grid>
                       <Grid item xs={3}>
                         <Button
@@ -210,9 +218,12 @@ export default class Coursedetailsview extends Component {
                               ? this.handleSave(course_id)
                               : this.handleSaveFail();
                           }}
-                          style={{ backgroundColor: '#D0B808', color: 'white' }}>
+                          style={{
+                            backgroundColor: '#D0B808',
+                            color: 'white'
+                          }}>
                           Save Course
-                      </Button>
+                        </Button>
                       </Grid>
                     </Grid>
                   </div>
@@ -224,7 +235,7 @@ export default class Coursedetailsview extends Component {
         <DetailCategory info={this.state.info} />
         <Recommendview />
         <Footer />
-      </div >
+      </div>
     );
   }
 }

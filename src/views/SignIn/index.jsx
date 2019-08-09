@@ -113,6 +113,11 @@ class SignIn extends Component {
     //   }
     // });
   };
+  handleEnter = e => {
+    if (e.key === 'Enter') {
+      this.handleSignIn();
+    }
+  };
 
   render() {
     const { classes } = this.props;
@@ -180,6 +185,9 @@ class SignIn extends Component {
                       onChange={event =>
                         this.handlePassword(event.target.value)
                       }
+                      onKeyDown={e => {
+                        this.handleEnter(e);
+                      }}
                     />
                   </div>
 

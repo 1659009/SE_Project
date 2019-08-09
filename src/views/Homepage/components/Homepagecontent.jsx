@@ -45,11 +45,16 @@ export default function ImgMediaCard(props) {
           COURSES
         </Typography>
       </Paper>
-      <div className="container">
-        <div className="row" style={{ padding: '30px 0px' }}>
+      <div
+        style={{
+          backgroundColor: '#eaded3',
+          padding: '50px 0px 50px 0px'
+        }}
+        className="container">
+        <div className="row">
           {data.map(data => {
             return (
-              <div className="col-4" style={{ paddingTop: '20px' }}>
+              <div className="col-4" style={{ marginTop: '20px' }}>
                 <Card className={classes.card}>
                   <CardActionArea>
                     <CardMedia
