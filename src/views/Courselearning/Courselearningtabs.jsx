@@ -4,18 +4,22 @@ import axios from 'axios';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
 import { Tabs, Radio } from 'antd';
-import { Grid, Container, Button } from '@material-ui/core';
+import { Grid, Container, Button, Paper, Typography } from '@material-ui/core';
 import './style.css';
 import { Api } from 'constants/api';
 let id;
 
 const { TabPane } = Tabs;
+let course_id, user_id;
 
 export default class Courselearningtabs extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             mode: 'left',
+            key: 1,
+            list: [],
+            name: ""
         };
     }
 
@@ -24,31 +28,80 @@ export default class Courselearningtabs extends React.Component {
         this.setState({ mode });
     };
 
+    componentWillMount() {
+        course_id = window.location.search.split('=')[1];
+        user_id = localStorage.getItem(
+            'user_id'
+        )
+    }
+
+    componentDidMount() {
+        this.getCourseLesson()
+    }
+
+    getCourseLesson = () => {
+        let link = Api.link + 'course-lesson?id=' + course_id;
+        axios
+            .get(link)
+            .then(response => {
+                console.log(response.data);
+
+                if (response.status === 200) {
+                    console.log(response.data);
+                    this.setState({
+                        list: response.data.course_lesson,
+                        name: response.data.course_name
+                    });
+                }
+            })
+            .catch(function (error) { });
+    }
+
+    renderItem = (lesson, index, courseName) => {
+        const { link } = lesson
+        index++;
+        let tabName = 'Lesson #' + index;
+        return (
+            <TabPane tab={tabName} key={index}>
+                <Container>
+                    <div className="text-center overview" >
+                        <iframe width="80%" height="500px" src={link} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </Container>
+            </TabPane>
+        )
+    }
+
     render() {
-        const { mode } = this.state;
-        // const { content } = props;
+        const { mode, list, name } = this.state;
+        console.log(this.state);
+
         return (
             <div>
+                <Paper
+                    style={{
+                        height: '6vh',
+                        position: 'relative',
+                        background: '#d0b808'
+                    }}>
+                    <Typography
+                        style={{
+                            color: '#2F4F4F',
+                            top: '50%',
+                            left: '50%',
+                            marginRight: '-50%',
+                            transform: 'translate(-50%,-50%)',
+                            position: 'absolute',
+                            fontWeight: 'Bold'
+                        }}
+                        variant="h1">
+                        {name}
+                    </Typography>
+                </Paper>
                 <Tabs className="tabSection" defaultActiveKey="1" tabPosition={mode} style={{ height: '70vh' }}>
-                    <TabPane tab="Overview" key={1}>
-                        <Container>
-                            <div className="text-center overview" >
-                                <iframe width="80%" height="500px" src="https://www.youtube.com/embed/kkmmDJD7QAE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            </div>
-                        </Container>
-                    </TabPane>
-                    <TabPane tab="Week 1" key={2}>
-                        Hi world
-                    </TabPane>
-                    <TabPane tab="Week 2" key={3}>
-                        Guten tag
-                    </TabPane>
-                    <TabPane tab="Week 3" key={4}>
-                        Guten tag
-                    </TabPane>
-                    <TabPane tab="Week 4" key={5}>
-                        Guten tag
-                    </TabPane>
+                    {list.map((lesson, index) => {
+                        return (this.renderItem(lesson, index))
+                    })}
                 </Tabs>
             </div>
         );

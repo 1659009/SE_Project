@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Table, Divider, Tag, Icon } from 'antd';
 import Fab from '@material-ui/core/Fab';
 import { makeStyles } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 let index = 0;
 class AccountTable extends Component {
@@ -14,7 +15,9 @@ class AccountTable extends Component {
     return (
       <tr>
         <td>{index + 1}</td>
-        <td>{name}</td>
+        <td>
+          <Link to={`/course-lesson?id=${id}`}>{name}</Link>
+        </td>
         <td>
           <button type="button" class="btn btn-danger">
             <Icon type="close" style={{ fontSize: '25px' }} />
@@ -41,8 +44,8 @@ class AccountTable extends Component {
               return this.renderItems(item, index);
             })
           ) : (
-            <tr>No course</tr>
-          )}
+              <tr>No course</tr>
+            )}
         </tbody>
       </table>
     );
